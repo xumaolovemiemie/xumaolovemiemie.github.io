@@ -6,22 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | 旭茂的小窝</title>
+  <title>透视HTTP协议 | 旭茂的小窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="一.HTTP的前世今生 HTTP 协议始于三十年前蒂姆·伯纳斯 - 李的一篇论文；  HTTP&#x2F;0.9 是个简单的文本协议，只能获取文本资源； HTTP&#x2F;1.0 确立了大部分现在使用的技术，但它不是正式标准； HTTP&#x2F;1.1 是目前互联网上使用最广泛的协议，功能也非常完善； HTTP&#x2F;2 基于 Google 的 SPDY 协议，注重性能改善，但还未普及； HTTP&#x2F;3 基于 Google 的 Q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/06/09/hello-world/index.html">
+<meta property="og:title" content="透视HTTP协议">
+<meta property="og:url" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/index.html">
 <meta property="og:site_name" content="旭茂的小窝">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="一.HTTP的前世今生 HTTP 协议始于三十年前蒂姆·伯纳斯 - 李的一篇论文；  HTTP&#x2F;0.9 是个简单的文本协议，只能获取文本资源； HTTP&#x2F;1.0 确立了大部分现在使用的技术，但它不是正式标准； HTTP&#x2F;1.1 是目前互联网上使用最广泛的协议，功能也非常完善； HTTP&#x2F;2 基于 Google 的 SPDY 协议，注重性能改善，但还未普及； HTTP&#x2F;3 基于 Google 的 Q">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-09T10:45:06.465Z">
-<meta property="article:modified_time" content="2020-06-09T10:45:06.465Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip1.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip2.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip3.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip4.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip5.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip6.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip7.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip8.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip9.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip10.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/img1.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/URI%E5%AE%8C%E6%95%B4%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip11.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip12.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip13.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip14.png">
+<meta property="article:published_time" content="2020-02-27T12:13:42.000Z">
+<meta property="article:modified_time" content="2020-06-09T12:49:46.896Z">
 <meta property="article:author" content="xumao">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/img/tip1.png">
   
     <link rel="alternative" href="/atom.xml" title="旭茂的小窝" type="application/atom+xml">
   
@@ -157,40 +172,277 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-http/透视HTTP协议(基础篇)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      透视HTTP协议
     </h1>
   
 
         
-        <a href="/2020/06/09/hello-world/" class="archive-article-date">
-  	<time datetime="2020-06-09T10:45:06.465Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+        <a href="/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/" class="archive-article-date">
+  	<time datetime="2020-02-27T12:13:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="一-HTTP的前世今生"><a href="#一-HTTP的前世今生" class="headerlink" title="一.HTTP的前世今生"></a>一.HTTP的前世今生</h3><ol>
+<li><p>HTTP 协议始于三十年前蒂姆·伯纳斯 - 李的一篇论文；</p>
+<ol start="2">
+<li>HTTP/0.9 是个简单的文本协议，只能获取文本资源；</li>
+<li>HTTP/1.0 确立了大部分现在使用的技术，但它不是正式标准；</li>
+<li>HTTP/1.1 是目前互联网上使用最广泛的协议，功能也非常完善；</li>
+<li>HTTP/2 基于 Google 的 SPDY 协议，注重性能改善，但还未普及；</li>
+<li>HTTP/3 基于 Google 的 QUIC 协议，是将来的发展方向。</li>
+</ol>
+</li>
+</ol>
+<img src="img/tip1.png" style="zoom:30%;" />
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="二-HTTP是具体含义"><a href="#二-HTTP是具体含义" class="headerlink" title="二.HTTP是具体含义"></a>二.HTTP是具体含义</h3><blockquote>
+<p>HTTP是超文本传输协议例：普通文件协议FTP,电子邮件协议SMTP,POP3</p>
+</blockquote>
+<ol>
+<li><p>HTTP 是一个用在计算机世界里的协议。它使用计算机能够理解的语言确立了一种计算机之间交流通信的规范，以及相关的各种控制和错误处理方式。–&gt;</p>
+</li>
+<li><p>HTTP 是一个在计算机世界里专门用来在两点之间传输数据的约定和规范–&gt;</p>
+</li>
+<li><p><strong>HTTP 是一个在计算机世界里专门在两点之间传输文字、图片、音频、视频等超文本数据的约定和规范</strong></p>
+</li>
+<li><p>HTTP 是构建互联网的重要基础技术，它没有实体，依赖许多其他的技术来实现，但同时许多技术也都依赖于它。</p>
+<blockquote>
+<p>在互联网世界里，HTTP 通常跑在 TCP/IP 协议栈之上，依靠 IP 协议实现寻址和路由、TCP 协议实现可靠数据传输、DNS 协议实现域名查找、SSL/TLS 协议实现安全通信。此外，还有一些协议依赖于 HTTP，例如 WebSocket、HTTPDNS 等</p>
+</blockquote>
+<img src="img/tip2.png" style="zoom:40%;" />
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="三-与HTTP相关的各种概念"><a href="#三-与HTTP相关的各种概念" class="headerlink" title="三.与HTTP相关的各种概念"></a>三.与HTTP相关的各种概念</h3><ol>
+<li><p><strong>网络世界</strong> :互联网世界更像是由数不清的大小岛屿组成的“千岛之国”。</p>
+<ol start="2">
+<li><strong>浏览器</strong>：浏览器本质上是一个 HTTP 协议中的请求方，使用 HTTP 协议获取网络上的各种资源</li>
+<li><strong>Web 服务器</strong>：服务器是 HTTP 协议里的应答方，常用的有 Apache 和 Nginx</li>
+<li><strong>CDN</strong>：全称是“Content Delivery Network”，翻译过来就是“内容分发网络”。它应用了 HTTP 协议里的缓存和代理技术，代替源站响应客户端的请求。位于浏览器和服务器之间，主要起到缓存加速的作用。</li>
+<li><strong>爬虫</strong>：实际上是一种可以自动访问 Web 资源的应用程序。</li>
+<li><strong>HTML/WebService/WAF</strong>：</li>
+</ol>
+<ul>
+<li><p>HTML 是 HTTP 协议传输的主要内容之一，它描述了超文本页面，用各种“标签”定义文字、图片等资源和排版布局，最终由浏览器“渲染”出可视化页面。</p>
+</li>
+<li><p>Web Service是一个基于 Web（HTTP）的服务架构技术</p>
+</li>
+<li><p>WAF是应用层面的“防火墙”，专门检测 HTTP 流量，是防护 Web 应用的安全技术。</p>
+<img src="img/tip3.png" style="zoom:20%;" />
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="四-与HTTP相关的各种协议"><a href="#四-与HTTP相关的各种协议" class="headerlink" title="四.与HTTP相关的各种协议"></a>四.与HTTP相关的各种协议</h3><ol>
+<li><strong>TCP/IP</strong>:TCP 属于“传输层”，IP 属于“网际层”，TCP/IP 是网络世界最常用的协议，HTTP 通常运行在 TCP/IP 提供的可靠传输基础上</li>
+</ol>
+<ul>
+<li>IP 协议是“Internet Protocol”的缩写，主要目的是解决寻址和路由问题，以及如何在两点间传送数据包。</li>
+<li>TCP 协议是“Transmission Control Protocol”的缩写，意思是“传输控制协议”，它位于 IP 协议之上，基于 IP 协议提供可靠的、字节流形式的通信，是 HTTP 协议得以实现的基础。</li>
+</ul>
+<ol start="2">
+<li><strong>DNS</strong>:“域名系统”（Domain Name System），DNS 域名是 IP 地址的等价替代，需要用域名解析实现到 IP 地址的映射</li>
+</ol>
+<blockquote>
+<p>但想要使用 TCP/IP 协议来通信仍然要使用 IP 地址，所以需要把域名做一个转换，“映射”到它的真实 IP，这就是所谓的“域名解析”。</p>
+</blockquote>
+<ol start="3">
+<li><strong>URI/URL</strong>:URI 是用来标记互联网上资源的一个名字，由“协议名 + 主机名 + 路径”构成，俗称 URL</li>
+</ol>
+<ul>
+<li>URI（Uniform Resource Identifier），中文名称是 统一资源标识符，使用它就能够唯一地标记互联网上资源。</li>
+<li>URI 另一个更常用的表现形式是 URL（Uniform Resource Locator）， 统一资源定位符，也就是我们俗称的“网址”，它实际上是 URI 的一个子集，不过因为这两者几乎是相同的，差异不大，所以通常不会做严格的区分。</li>
+</ul>
+<ol start="4">
+<li><strong>HTTPS</strong>:全称是“HTTP over SSL/TLS”,HTTPS 相当于“HTTP+SSL/TLS+TCP/IP”，为 HTTP 套了一个安全的外壳</li>
+</ol>
+<blockquote>
+<p>SSL 的全称是“Secure Socket Layer”，由网景公司发明，当发展到 3.0 时被标准化，改名为 TLS，即“Transport Layer Security”，但由于历史的原因还是有很多人称之为 SSL/TLS，或者直接简称为 SSL。</p>
+</blockquote>
+<ol start="5">
+<li><strong>代理</strong>：代理是 HTTP 传输过程中的“中转站”，可以实现缓存加速、负载均衡等功能</li>
+</ol>
+<ul>
+<li>代理常见种类：匿名台历、透明代理、正向代理、反向代理</li>
+<li>代理可以做的事：负载均衡、内容缓存、安全防护、数据处理</li>
+</ul>
+<img src="img/tip4.png" style="zoom:20%;" />
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h3 id="五-网络分层"><a href="#五-网络分层" class="headerlink" title="五.网络分层"></a>五.网络分层</h3><h4 id="1-TCP-IP-网络分层模型"><a href="#1-TCP-IP-网络分层模型" class="headerlink" title="1. TCP/IP 网络分层模型"></a>1. TCP/IP 网络分层模型</h4><blockquote>
+<p>MAC 层的传输单位是帧（frame），IP 层的传输单位是包（packet），TCP 层的传输单位是段（segment），HTTP 的传输单位则是消息或报文（message）。但这些名词并没有什么本质的区分，可以统称为数据包。</p>
+</blockquote>
+<pre><code> 1. **链接层（link layer）**：负责在以太网、WiFi 这样的底层网络上发送原始数据包，工作在网卡这个层次，使用 MAC 地址来标记网络上的设备，所以有时候也叫 MAC 层。
+ 2. **网际层（internet layer）**：IP 协议就处在这一层。因为 IP 协议定义了“IP 地址”的概念，所以就可以在“链接层”的基础上，用 IP 地址取代 MAC 地址，把许许多多的局域网、广域网连接成一个虚拟的巨大网络，在这个网络里找设备时只要把 IP 地址再“翻译”成 MAC 地址就可以了。
+ 3. **传输层（transport layer）**：这个层次协议的职责是保证数据在 IP 地址标记的两点之间“可靠”地传输，是 TCP和UDP 协议工作的层次。
+ * TCP 的数据是连续的“字节流”，有先后顺序
+ * UDP 则是分散的小数据包，是顺序发，乱序收
+4. **应用层（application layer）**:有各种面向具体应用的协议。例如 Telnet、SSH、FTP、SMTP 等等，当然还有我们的 HTTP。</code></pre><h4 id="2-OSI-网络分层模型"><a href="#2-OSI-网络分层模型" class="headerlink" title="2. OSI 网络分层模型"></a>2. OSI 网络分层模型</h4><blockquote>
+<p>全称是“开放式系统互联通信参考模型”（Open System Interconnection Reference Model）</p>
+</blockquote>
+<ol>
+<li><p><strong>物理层</strong>，网络的物理形式，例如电缆、光纤、网卡、集线器等等；</p>
+<ol start="2">
+<li><strong>数据链路层</strong>，它基本相当于 TCP/IP 的链接层；</li>
+<li><strong>网络层</strong>，相当于 TCP/IP 里的网际层；</li>
+<li><strong>传输层</strong>，相当于 TCP/IP 里的传输层；</li>
+<li><strong>会话层</strong>，维护网络中的连接状态，即保持会话和同步；</li>
+<li><strong>表示层</strong>，把数据转换为合适、可理解的语法和语义；</li>
+<li><strong>应用层</strong>，面向具体的应用传输数据。</li>
+</ol>
+</li>
+</ol>
+<img src="img/tip5.png" style="zoom:20%;" />
 
+<h3 id="六-域名"><a href="#六-域名" class="headerlink" title="六.域名"></a>六.域名</h3><ol>
+<li><p>域名使用字符串来代替 IP 地址，方便用户记忆，本质上一个名字空间系统；</p>
+<ol start="2">
+<li>DNS 就像是我们现实世界里的电话本、查号台，统管着互联网世界里的所有网站，是一个“超级大管家”；</li>
+<li>DNS 是一个树状的分布式查询系统，但为了提高查询效率，外围有多级的缓存；</li>
+<li>使用 DNS 可以实现基于域名的负载均衡，既可以在内网，也可以在外网。</li>
+</ol>
+</li>
+</ol>
+<img src="img/tip6.png" style="zoom:20%;" />
+
+<h3 id="七-HTTP结构"><a href="#七-HTTP结构" class="headerlink" title="七.HTTP结构"></a>七.HTTP结构</h3><h5 id="1-TCP报文结构"><a href="#1-TCP报文结构" class="headerlink" title="1.TCP报文结构"></a>1.TCP报文结构</h5><blockquote>
+<p>TCP头部至少20字节，包含：发起方端口，接收方端口，其他数据（序号、标志位、窗口大小等）</p>
+<p>实际传输的数据通常大小是1460字节</p>
+</blockquote>
+<h5 id="2-HTTP协议的请求报文和响应报文结构"><a href="#2-HTTP协议的请求报文和响应报文结构" class="headerlink" title="2.HTTP协议的请求报文和响应报文结构"></a>2.HTTP协议的请求报文和响应报文结构</h5><ol>
+<li><p><strong>起始行</strong>：描述请求或响应的基本信息</p>
+<ol start="2">
+<li><strong>头部字段集合</strong>：使用key-value形式更详细的说明报文</li>
+<li><strong>消息正文</strong>：实际传输的数据，它不一定是纯文本，可以是图片、视频等二进制数据</li>
+</ol>
+</li>
+</ol>
+<h5 id="3-请求行—-客户端想要如何操作服务器端的资源"><a href="#3-请求行—-客户端想要如何操作服务器端的资源" class="headerlink" title="3.请求行—-客户端想要如何操作服务器端的资源"></a>3.请求行—-客户端想要如何操作服务器端的资源</h5><ol>
+<li><p>请求方法：是一个动词，如 GET/POST，表示对资源的操作；</p>
+<ol start="2">
+<li>请求目标：通常是一个 URI，标记了请求方法要操作的资源；</li>
+<li>版本号：表示报文使用的 HTTP 协议版本。</li>
+</ol>
+</li>
+</ol>
+<h5 id="4-状态行—-服务器响应的状态"><a href="#4-状态行—-服务器响应的状态" class="headerlink" title="4.状态行—-服务器响应的状态"></a>4.状态行—-服务器响应的状态</h5><pre><code>1. 版本号：表示报文使用的 HTTP 协议版本；
+2. 状态码：一个三位数，用代码的形式表示处理的结果，比如 200 是成功，500 是服务器错误；
+3. 原因：作为数字状态码补充，是更详细的解释文字，帮助人理解原因。</code></pre><h5 id="5-头部字段"><a href="#5-头部字段" class="headerlink" title="5.头部字段"></a>5.头部字段</h5><blockquote>
+<p>请求头和响应头的结构是基本一样的，唯一的区别是起始行</p>
+</blockquote>
+<pre><code>1. 字段名不区分大小写，例如“Host”也可以写成“host”，但首字母大写的可读性更好；
+2. 字段名里不允许出现空格，可以使用连字符“-”，但不能使用下划线“_”。例如，“test-name”是合法的字段名，而“test name”“test_name”是不正确的字段名；
+3. 字段名后面必须紧接着“:”，不能有空格，而“:”后的字段值前可以有多个空格；
+4. 字段的顺序是没有意义的，可以任意排列不影响语义；
+5. 字段原则上不能重复，除非这个字段本身的语义允许，例如 Set-Cookie。</code></pre><h5 id="6-常用头字段"><a href="#6-常用头字段" class="headerlink" title="6.常用头字段"></a>6.常用头字段</h5><ol>
+<li>通用字段：在请求头和响应头里都可以出现；</li>
+<li>请求字段：仅能出现在请求头里，进一步说明请求信息或者额外的附加条件；</li>
+<li>响应字段：仅能出现在响应头里，补充说明响应报文的信息；</li>
+<li>实体字段：它实际上属于通用字段，但专门描述 body 的额外信息。</li>
+</ol>
+<p><strong>Host</strong>字段属于请求字段，只能出现在请求头里面，<strong>必须出现</strong></p>
+<p><strong>User-Agent</strong>只出现在请求头里，它使用一个字符串来描述发起 HTTP 请求的客户端，服务器可以依据它来返回最合适此浏览器显示的页面。</p>
+<p><strong>Date</strong>字段是一个通用字段，但通常出现在响应头里，表示 HTTP 报文创建的时间，客户端可以使用这个时间再搭配其他字段决定缓存策略。</p>
+<p><strong>Server</strong>字段是响应字段，只能出现在响应头里。它告诉客户端当前正在提供 Web 服务的软件名称和版本号,也不是必须要出现的，因为这会把服务器的一部分信息暴露给外界。</p>
+<p><strong>Content-Length</strong>在实体字段中，它表示报文里 body 的长度，也就是请求头或响应头空行后面数据的长度。</p>
+<img src="img/tip7.png" style="zoom:20%;" />
+
+<img src="img/tip8.png" style="zoom:20%;" />
+
+<img src="img/tip9.png" style="zoom:20%;" />
+
+<h3 id="八-请求方法"><a href="#八-请求方法" class="headerlink" title="八.请求方法"></a>八.请求方法</h3><blockquote>
+<p>HTTP/1.1 规定了八种方法，单词<strong>都必须是大写的形式</strong></p>
+</blockquote>
+<ol>
+<li>GET：获取资源，可以理解为读取或者下载数据；</li>
+<li>HEAD：获取资源的元信息；</li>
+<li>POST：向资源提交数据，相当于写入或上传数据；</li>
+<li>PUT：类似 POST；</li>
+<li>DELETE：删除资源；</li>
+<li>CONNECT：建立特殊的连接隧道；</li>
+<li>OPTIONS：列出可对资源实行的方法；</li>
+<li>TRACE：追踪请求 - 响应的传输路径。</li>
+</ol>
+<p>GET/HEAD<br>  ——从服务器获取资源<br>  HEAD和GET类似，也是从服务器获取资源，但是不会返回请求的实体数据，只有响应头（元信息），是GET的简易版，如果不需要资源的话，可以避免传输body数据的浪费。</p>
+<p>POST/PUT<br>  ——向服务器提交数据，数据在body里<br>  PUT和POST作用类似，有微妙不同，通常POST标识新建，PUT标识修改</p>
+<p>DELETE<br>  ——删除资源，危险性大，很少用</p>
+<p>CONNECT<br>  ——要求服务器为客户端和另一台远程服务器建立一条特殊的链接，这时Web服务器充当代理的角色</p>
+<p>OPTIONS<br>  ——要求服务器列出可对资源实行的操作方法，在响应头Allow字段里返回。功能有限，用处不大。Nginx没支持</p>
+<p>TRACE<br>  ——用于对HTTP链路的测试或诊断，可以显示出请求 - 响应的传输路径。存在漏洞，会泄露网站的信息，所以通常也是禁止使用</p>
+<p>安全与幂等</p>
+<p>​    安全：在HTTP协议里，所谓的安全，是指请求方法不会对服务器上的资源造成实质的修改，so 只有GET和HEAD是安全的，因为是只读操作。</p>
+<p>​    幂等：多次执行相同的操作，结果也都是相同的。so GET和HEAD 即是安全的也是幂等的，DELETE可以多次删除同一个资源，效果都是“资源不存在”，所以也是幂等。POST是新增或提交数据，多次提交会创建多个资源，所以不是幂等的。PUT是替换或更新数据，多次更新一个资源，资源还是第一次更新的状态。所以是幂等的。</p>
+<p>​    幂等：GET、HEAD、DELETE、PUT<br>​    非幂等：POST</p>
+<img src="img/tip10.png" style="zoom:20%;" />
+
+<h3 id="九-网址格式"><a href="#九-网址格式" class="headerlink" title="九.网址格式"></a>九.网址格式</h3><h5 id="1-URI格式"><a href="#1-URI格式" class="headerlink" title="1.URI格式"></a>1.URI格式</h5><p>​    URI 本质上是一个字符串，这个字符串的作用是<strong>唯一地标记资源的位置或者名字</strong>。URI 最常用的形式，由 scheme、host:port、path 和 query 四个部分组成，但有的部分可以视情况省略。</p>
+<img src="img/img1.png" style="zoom:25%;" />
+
+<h5 id="2-URI-的基本组成"><a href="#2-URI-的基本组成" class="headerlink" title="2.URI 的基本组成"></a>2.URI 的基本组成</h5><p>​    URI 第一个组成部分叫 <strong>scheme</strong>，翻译成中文叫“<strong>方案名</strong>”或者“<strong>协议名</strong>”，表示<strong>资源应该使用哪种协议</strong>来访问。</p>
+<p>​    在 scheme 之后，必须是<strong>三个特定的字符“://”</strong>，它把 scheme 和后面的部分分离开。</p>
+<p>​    在“://”之后，是被称为“<strong>authority</strong>”的部分，表示<strong>资源所在的主机名</strong>，通常的形式是“host:port”，即主机名加端口号。</p>
+<p>​    有了协议名和主机地址、端口号，再加上后面<strong>标记资源所在位置</strong>的 <strong>path</strong>，浏览器就可以连接服务器访问资源了。</p>
+<h5 id="3-URI的查询参数"><a href="#3-URI的查询参数" class="headerlink" title="3.URI的查询参数"></a>3.URI的查询参数</h5><p>​    URI 后面还有一个“<strong>query</strong>”部分，它在 path 之后，用一个“?”开始，但不包含“?”，表示对资源附加的额外要求。这是个很形象的符号，比“://”要好的多，很明显地表示了“查询”的含义。</p>
+<p>​    查询参数 query 有一套自己的格式，是多个“<strong>key=value</strong>”的字符串，这些 KV 值用字符“<strong>&amp;</strong>”连接，浏览器和服务器都可以按照这个格式把长串的查询参数解析成可理解的字典或关联数组形式。</p>
+<h5 id="4-URI的完整格式"><a href="#4-URI的完整格式" class="headerlink" title="4.URI的完整格式"></a>4.URI的完整格式</h5><img src="img/URI完整格式.png" style="zoom:25%;" />
+
+<p>​    第一个多出的部分是协议名之后、主机名之前的<strong>身份信息</strong>“user:passwd@”，表示登录主机时的用户名和密码，但现在已经不推荐使用这种形式了（RFC7230），因为它把敏感信息以明文形式暴露出来，存在严重的安全隐患。</p>
+<p>​    第二个多出的部分是查询参数后的<strong>片段标识符</strong>“#fragment”，它是 URI 所定位的资源内部的一个“锚点”或者说是“标签”，浏览器可以在获取资源后直接跳转到它指示的位置。但片段标识符仅能由浏览器这样的客户端使用，服务器是看不到的。</p>
+<h5 id="5-URI-的编码"><a href="#5-URI-的编码" class="headerlink" title="5.URI 的编码"></a>5.URI 的编码</h5><p>​    URI 引入了编码机制，对于 ASCII 码以外的字符集和特殊字符做一个特殊的操作，把它们转换成与 URI 语义不冲突的形式。这在 RFC 规范里称为“escape”和“unescape”，俗称“转义”。URI 转义的规则有点“简单粗暴”，直接把非 ASCII 码或特殊字符转换成十六进制字节值，然后前面再加上一个“%”。</p>
+<img src="img/tip11.png" style="zoom:20%;" />
+
+<h3 id="十-响应状态码"><a href="#十-响应状态码" class="headerlink" title="十.响应状态码"></a>十.响应状态码</h3><ul>
+<li>1××：提示信息，表示目前是协议处理的中间状态，还需要后续的操作；</li>
+<li>2××：成功，报文已经收到并被正确处理；</li>
+<li>3××：重定向，资源位置发生变动，需要客户端重新发送请求；</li>
+<li>4××：客户端错误，请求报文有误，服务器无法处理；</li>
+<li>5××：服务器错误，服务器在处理请求时内部发生了错误。</li>
+</ul>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
+<li>状态码在响应报文里表示了服务器对请求的处理结果；</li>
+<li>状态码后的原因短语是简单的文字描述，可以自定义；</li>
+<li>状态码是十进制的三位数，分为五类，从 100 到 599；</li>
+<li>2××类状态码表示成功，常用的有 200、204、206；</li>
+<li>3××类状态码表示重定向，常用的有 301、302、304；</li>
+<li>4××类状态码表示客户端错误，常用的有 400、403、404；</li>
+<li>5××类状态码表示服务器错误，常用的有 500、501、502、503。</li>
+</ul>
+<img src="img/tip12.png" style="zoom:20%;" />
+
+<h3 id="十一-HTTP特点"><a href="#十一-HTTP特点" class="headerlink" title="十一.HTTP特点"></a>十一.HTTP特点</h3><ul>
+<li><p>HTTP 协议是一个“灵活可扩展”的传输协议，可以任意添加头字段实现任意功能；</p>
+</li>
+<li><p>HTTP 协议是一个“可靠”的传输协议，基于 TCP/IP 协议“尽量”保证数据的送达；</p>
+</li>
+<li><p>HTTP 协议是一个应用层的协议，比 FTP、SSH 等更通用功能更多，能够传输任意数据；</p>
+</li>
+<li><p>HTTP 协议使用的是请求 - 应答通信模式，客户端主动发起请求，服务器被动回复请求；</p>
+</li>
+<li><p>HTTP 协议是无状态的，每个请求都是互相独立、毫无关联的，协议不要求客户端或服务器记录请求相关的信息。</p>
+</li>
+</ul>
+<img src="img/tip13.png" style="zoom:20%;" />
+
+<h3 id="十二-HTTP的优缺点"><a href="#十二-HTTP的优缺点" class="headerlink" title="十二.HTTP的优缺点"></a>十二.HTTP的优缺点</h3><ul>
+<li>HTTP 最大的优点是简单、灵活和易于扩展；</li>
+<li>HTTP 拥有成熟的软硬件环境，应用的非常广泛，是互联网的基础设施；</li>
+<li>HTTP 是无状态的，可以轻松实现集群化，扩展性能，但有时也需要用 Cookie 技术来实现“有状态”；</li>
+<li>HTTP 是明文传输，数据完全肉眼可见，能够方便地研究分析，但也容易被窃听；</li>
+<li>HTTP 是不安全的，无法验证通信双方的身份，也不能判断报文是否被窜改；</li>
+<li>HTTP 的性能不算差，但不完全适应现在的互联网，还有很大的提升空间。</li>
+</ul>
+<img src="img/tip14.png" style="zoom:20%;" />
       
 
       
@@ -219,6 +471,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -269,7 +532,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/09/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/27/http/%E9%80%8F%E8%A7%86HTTP%E5%8D%8F%E8%AE%AE(%E5%9F%BA%E7%A1%80%E7%AF%87)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +546,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/06/09/test/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/09/algorithm/%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          test
+          算法和数据结构
         
       </div>
     </a>
   
   
-    <a href="/2020/03/09/algorithm/%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">算法和数据结构</div>
+    <a href="/2019/11/01/android/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%A3%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android设计模式解析</div>
       <i class="icon-circle-right"></i>
     </a>
   

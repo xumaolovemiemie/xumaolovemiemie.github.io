@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | 旭茂的小窝</title>
+  <title>Android群英传 | 旭茂的小窝</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="五、AndroidScroll分析1.滑动效果如何产生的1).Android 坐标系含义： 将屏幕最左上角的顶点作为Android坐标系的远点，这个点向右是X轴正方向，这个点向下是Y轴正方向。 系统提供了getLocationOnScreen(int location[])的方法来获取Android 坐标系中点的位置，另外在触控事件中使用getRawX()、getRawY()方法获得的坐标统一是A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/06/09/hello-world/index.html">
+<meta property="og:title" content="Android群英传">
+<meta property="og:url" content="http://yoursite.com/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/index.html">
 <meta property="og:site_name" content="旭茂的小窝">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="五、AndroidScroll分析1.滑动效果如何产生的1).Android 坐标系含义： 将屏幕最左上角的顶点作为Android坐标系的远点，这个点向右是X轴正方向，这个点向下是Y轴正方向。 系统提供了getLocationOnScreen(int location[])的方法来获取Android 坐标系中点的位置，另外在触控事件中使用getRawX()、getRawY()方法获得的坐标统一是A">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-09T10:45:06.465Z">
-<meta property="article:modified_time" content="2020-06-09T10:45:06.465Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/img/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/img/activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/img/2.png">
+<meta property="article:published_time" content="2019-07-20T12:44:01.000Z">
+<meta property="article:modified_time" content="2020-06-09T12:47:33.943Z">
 <meta property="article:author" content="xumao">
 <meta property="article:tag" content="Android">
-<meta property="article:tag" content="Python">
-<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/img/1.png">
   
     <link rel="alternative" href="/atom.xml" title="旭茂的小窝" type="application/atom+xml">
   
@@ -157,39 +159,680 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-android/Android群英传" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Android群英传
     </h1>
   
 
         
-        <a href="/2020/06/09/hello-world/" class="archive-article-date">
-  	<time datetime="2020-06-09T10:45:06.465Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+        <a href="/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/" class="archive-article-date">
+  	<time datetime="2019-07-20T12:44:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="五、AndroidScroll分析"><a href="#五、AndroidScroll分析" class="headerlink" title="五、AndroidScroll分析"></a>五、AndroidScroll分析</h2><h3 id="1-滑动效果如何产生的"><a href="#1-滑动效果如何产生的" class="headerlink" title="1.滑动效果如何产生的"></a>1.滑动效果如何产生的</h3><h4 id="1-Android-坐标系"><a href="#1-Android-坐标系" class="headerlink" title="1).Android 坐标系"></a>1).Android 坐标系</h4><p><strong>含义：</strong> 将屏幕最左上角的顶点作为Android坐标系的远点，这个点向右是X轴正方向，这个点向下是Y轴正方向。</p>
+<p>系统提供了getLocationOnScreen(int location[])的方法来获取Android 坐标系中点的位置，另外在触控事件中使用getRawX()、getRawY()方法获得的坐标统一是Android 坐标系中的坐标</p>
+<h4 id="2-视图坐标系"><a href="#2-视图坐标系" class="headerlink" title="2).视图坐标系"></a>2).视图坐标系</h4><p><strong>含义：</strong> 描述了子视图在父视图中的位置关系</p>
+<p>在触控事件中，通过getX(),getY()所获得的坐标就是视图坐标系中的坐标</p>
+<h4 id="3-触控事件——MotionEvent"><a href="#3-触控事件——MotionEvent" class="headerlink" title="3).触控事件——MotionEvent"></a>3).触控事件——MotionEvent</h4><p>通常情况下，我们会在onTouchEvent(MotionEvent event)方法中通过event.getAction()方法来获取触控事件的类型</p>
+<ul>
+<li><p>View提供的获取坐标的方法</p>
+<p>getTop()：获取到的是View自身的顶点到其父布局顶边的距离</p>
+<p>getLeft()：获取到的是View自身的左边到其父布局左边的距离</p>
+<p>getRight()：获取到的是View自身的右边到其父布局左边的距离</p>
+<p>getLeft()：获取到的是View自身的底边到其父布局顶边的距离</p>
+</li>
+<li><p>MotionEvent提供的方法</p>
+<p>getX()：获取点击事件距离控件左边的距离，即视图坐标</p>
+<p>getY()：获取点击事件距离控件顶边的距离，即视图坐标</p>
+<p>getRawX()：获取点击事件距离整个屏幕左边的距离，即绝对坐标</p>
+<p>getRawY()：获取点击事件距离整个屏幕顶边的距离，即绝对坐标</p>
+</li>
+</ul>
+<h3 id="2-实现滑动的七种方法"><a href="#2-实现滑动的七种方法" class="headerlink" title="2.实现滑动的七种方法"></a>2.实现滑动的七种方法</h3><h4 id="1-layout方法"><a href="#1-layout方法" class="headerlink" title="1).layout方法"></a>1).layout方法</h4><ul>
+<li>在每次回调onTouchEvent的时候，我们都获取下触摸点的坐标</li>
+<li>在ACTION_DOWN事件中记录触摸点的坐标</li>
+<li>最后，在ACTION_MOVE事件中计算偏移量，并将偏移量作用到Layout方法中，在目前Layout的left，top,right,bottom基础上，增加计算出来的偏移量</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = (<span class="keyword">int</span>)event.getX();</span><br><span class="line">  <span class="keyword">int</span> y = (<span class="keyword">int</span>)event.getY();</span><br><span class="line">  <span class="keyword">switch</span>(event.getAction())&#123;</span><br><span class="line">    <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">      <span class="comment">//记录触摸点坐标</span></span><br><span class="line">      lastX = x;</span><br><span class="line">      lastY = y;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">     	<span class="comment">//计算偏移量</span></span><br><span class="line">      <span class="keyword">int</span> offsetX = x - lastX;</span><br><span class="line">      <span class="keyword">int</span> offsetY = y - lastY;</span><br><span class="line">      <span class="comment">//在当前left,top,right,bottom的基础上加上偏移量</span></span><br><span class="line">      layout(getLeft() + offsetX,</span><br><span class="line">            getTop() + offsetY,</span><br><span class="line">            getRight() + offsetX,</span><br><span class="line">            getBottom() + offsetY);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意点：</strong> 如果使用绝对坐标系，在每次执行完ACTION_MOVE的逻辑后一定要重新设置初始坐标系，这样才能准确的获取偏移量</p>
+</blockquote>
+<h4 id="2-offsetLeftAndRight-与offsetTopAndBottom"><a href="#2-offsetLeftAndRight-与offsetTopAndBottom" class="headerlink" title="2).offsetLeftAndRight()与offsetTopAndBottom()"></a>2).offsetLeftAndRight()与offsetTopAndBottom()</h4><p>这个方法相当于系统提供的一个对左右、上下移动的API的封装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//同时对left和right进行偏移</span></span><br><span class="line">offsetLeftAndRight(offsetX)</span><br><span class="line"><span class="comment">//同时对left和right进行偏移</span></span><br><span class="line">offsetTopAndBottom(offsetY)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h4 id="3-LayoutParams"><a href="#3-LayoutParams" class="headerlink" title="3).LayoutParams"></a>3).LayoutParams</h4><p>必须要有一个父布局，系统才能获取LayoutParams,通过getLayoutParams()获取时，需要根据View所在的父布局的类型来设置不同的类型，例如在LinearLayout中使用LinearLayout.LayoutParams,在RelativeLayout中用RelativeLayout.LayoutParams</p>
+<p>也可以直接使用ViewGroup.MarginLayoutParams,这样不需要考虑父布局的类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)getLayoutParams();</span><br><span class="line">params.leftMargin = getLeft() + offsetX;</span><br><span class="line">params.topMargin = getTop() +offsetY;</span><br><span class="line">setLayoutParams(layoutParams);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-scrollTo与scrollBy"><a href="#4-scrollTo与scrollBy" class="headerlink" title="4).scrollTo与scrollBy"></a>4).scrollTo与scrollBy</h4><p>scrollTo(x,y)表示移动到一个具体的坐标点(x,y)</p>
+<p>scrollBy(dx,dy)表示移动的增量未dx,dy</p>
+<p>这两个方法移动的是View的content,如果需要实现跟随手指的移动而滑动的效果，必须将偏移量设置为负值</p>
+<h4 id="5-Scroller"><a href="#5-Scroller" class="headerlink" title="5).Scroller"></a>5).Scroller</h4><ul>
+<li><p>初始化Scroller</p>
+</li>
+<li><p>重写computeScroll()方法，实现模拟滑动，这个方法实际上就是使用的scrollTo方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">super</span>.computeScroll();</span><br><span class="line">  <span class="comment">//判断Scroller是否执行完毕</span></span><br><span class="line">  <span class="keyword">if</span>(mScroller.computeScrollOffset())&#123;</span><br><span class="line">    ((View)getParent()).scrollTo(</span><br><span class="line">    				mScroller.getCurrX(),</span><br><span class="line">    				mScroller.getCurrY());</span><br><span class="line">    <span class="comment">//通过重绘来不断调用computeScroll</span></span><br><span class="line">    invalidate();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>startScroll开启模拟过程,有两个重载方法，一个带时间，其他的参数表示起始坐标和偏移量</p>
+<p>startScroll(int startX,int startY,int dx,int dy,int duration)</p>
+<p>startScroll(int startX,int startY,int dx,int dy)</p>
+</li>
+</ul>
+<h4 id="6-属性动画"><a href="#6-属性动画" class="headerlink" title="6).属性动画"></a>6).属性动画</h4><blockquote>
+<p>具体直接参考第七章</p>
+</blockquote>
+<h4 id="7-ViewDragHelper"><a href="#7-ViewDragHelper" class="headerlink" title="7).ViewDragHelper"></a>7).ViewDragHelper</h4><ul>
+<li><p>初始化ViewDragHelper</p>
+<p>通常定义在一个VIewGroup的内部，并且通过其静态工厂方法进行初始化，第一个参数是要监听的view,通常需要的就是一个ViewGroup,即parentView，第二个参数就是一个Callback回调</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mViewHelper = ViewDragHelper.create(<span class="keyword">this</span>,callback);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拦截事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mViewHelper.shouldInterceptTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//将触摸事件传递给ViewDragHelper，此操作必不可少</span></span><br><span class="line">        mViewHelper.processTouchEvent(event);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理computeScroll()</p>
+<p>ViewDragHelper内部也是用Scroller来实现平滑移动的，同样需要重写computeScroll()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">computeScroll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mViewHelper.continueSettling(<span class="keyword">true</span>)) &#123;</span><br><span class="line">            ViewCompat.postInvalidateOnAnimation(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>处理Callback</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ViewDragHelper.Callback mCallback = <span class="keyword">new</span> ViewDragHelper.Callback() &#123;</span><br><span class="line">       <span class="comment">//何时开始检测触摸事件</span></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">tryCaptureView</span><span class="params">(@NonNull View child, <span class="keyword">int</span> pointerId)</span> </span>&#123;</span><br><span class="line">           <span class="comment">//如果当前触摸的child是mMainView时开始检测</span></span><br><span class="line">           <span class="keyword">return</span> mMainView = child;</span><br><span class="line">       &#125;</span><br><span class="line">  </span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">clampViewPositionVertical</span><span class="params">(@NonNull View child, <span class="keyword">int</span> top, <span class="keyword">int</span> dy)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">       &#125;</span><br><span class="line">  </span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">clampViewPositionHorizontal</span><span class="params">(@NonNull View child, <span class="keyword">int</span> left, <span class="keyword">int</span> dx)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> left;</span><br><span class="line">       &#125;</span><br><span class="line">  </span><br><span class="line">   		<span class="comment">//拖动结束后调用</span></span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onViewReleased</span><span class="params">(@NonNull View releasedChild, <span class="keyword">float</span> xvel, <span class="keyword">float</span> yvel)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">super</span>.onViewReleased(releasedChild, xvel, yvel);</span><br><span class="line">           <span class="comment">//手指抬起后缓慢移动到指定位置</span></span><br><span class="line">           <span class="keyword">if</span> (mMainView.getLeft() &lt; mWidth / <span class="number">2</span>) &#123;</span><br><span class="line">               <span class="comment">//关闭菜单</span></span><br><span class="line">               <span class="comment">//相当于Scroller的startScroll方法</span></span><br><span class="line">               mViewHelper.smoothSlideViewTo(mMainView, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">               ViewCompat.postInvalidateOnAnimation(DragViewGroup.<span class="keyword">this</span>);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="comment">//打开菜单</span></span><br><span class="line">               mViewHelper.smoothSlideViewTo(mMainView, mWidth, <span class="number">0</span>);</span><br><span class="line">               ViewCompat.postInvalidateOnAnimation(DragViewGroup.<span class="keyword">this</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="六、绘图机制与处理技巧"><a href="#六、绘图机制与处理技巧" class="headerlink" title="六、绘图机制与处理技巧"></a>六、绘图机制与处理技巧</h2><h3 id="1-屏幕的尺寸信息"><a href="#1-屏幕的尺寸信息" class="headerlink" title="1.屏幕的尺寸信息"></a>1.屏幕的尺寸信息</h3><h4 id="1-屏幕参数"><a href="#1-屏幕参数" class="headerlink" title="1).屏幕参数"></a>1).屏幕参数</h4><ul>
+<li>屏幕大小：指屏幕对角线的长度</li>
+<li>分辨率：指手机屏幕的像素点的个数</li>
+<li>PPI：每英寸像素，又被称为DPI</li>
+</ul>
+<h4 id="2-系统屏幕密度"><a href="#2-系统屏幕密度" class="headerlink" title="2).系统屏幕密度"></a>2).系统屏幕密度</h4><table>
+<thead>
+<tr>
+<th align="center">密度</th>
+<th align="center">dpi</th>
+<th align="center">mdpi</th>
+<th align="center">hdpi</th>
+<th align="center">xhdpi</th>
+<th align="center">xxhdpi</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">密度值</td>
+<td align="center">120</td>
+<td align="center">160</td>
+<td align="center">240</td>
+<td align="center">320</td>
+<td align="center">480</td>
+</tr>
+<tr>
+<td align="center">分辨率</td>
+<td align="center">240*320</td>
+<td align="center">320*480</td>
+<td align="center">480*800</td>
+<td align="center">720*1280</td>
+<td align="center">1080*1920</td>
+</tr>
+</tbody></table>
+<h4 id="3-独立像素密度dp"><a href="#3-独立像素密度dp" class="headerlink" title="3).独立像素密度dp"></a>3).独立像素密度dp</h4><p>Android系统使用mdpi的屏幕作为标准，在这个屏幕上1px=1dp,在各种密度的屏幕上按照比例换算,比例如下</p>
+<blockquote>
+<p>ldpi:mdpi:hdpi:xhdpi:xxhdpi = 3:4:6:8:12</p>
+</blockquote>
+<h4 id="4-单位转换"><a href="#4-单位转换" class="headerlink" title="4).单位转换"></a>4).单位转换</h4><p>context.getResources().getDisplayMetrics().density可以获取到换算比例</p>
+<p>也可以使用TypedValued类进行转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dp2px</span><span class="params">(<span class="keyword">int</span> dp)</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">int</span>)TypedValue.applyDimension(</span><br><span class="line">    													TypedValue.COMPLEX_UNIT_DIP,</span><br><span class="line">                              dp,</span><br><span class="line">    													getResources().getDisplayMetrics());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2D绘图基础"><a href="#2-2D绘图基础" class="headerlink" title="2.2D绘图基础"></a>2.2D绘图基础</h3><p>Paint的属性和对应的功能：</p>
+<ul>
+<li>setAntiAlias();       //设置画笔的锯齿效果</li>
+<li>setColor();             //设置画笔的颜色   </li>
+<li>setARGB();            //设置画笔的A，R，G，B值</li>
+<li>setAlpha();            //设置画笔的Alpha值</li>
+<li>setTextSize();        //设置字体的尺寸</li>
+<li>setStyle();              //设置画笔空心还是实心</li>
+<li>setStrokeWidth(); //设置空心边框的宽度</li>
+</ul>
+<p>Canvas的方法</p>
+<ul>
+<li>DrawPoint，绘制点</li>
+<li>DrawLine，绘制一条直线</li>
+<li>DrawLines，绘制多条直线</li>
+<li>DrawRect，绘制矩形</li>
+<li>DrawRoundRect，绘制圆角矩形</li>
+<li>DrawCircle，绘制圆</li>
+<li>DrawArc，绘制弧形，扇形</li>
+<li>DrawOval，绘制椭圆</li>
+<li>DrawText，绘制文本</li>
+<li>DrawPosText，在指定位置绘制文本</li>
+<li>DrawPath,绘制路径</li>
+</ul>
+<h3 id="3-Android-XML绘图"><a href="#3-Android-XML绘图" class="headerlink" title="3.Android XML绘图"></a>3.Android XML绘图</h3><h4 id="1-Bitmap"><a href="#1-Bitmap" class="headerlink" title="1).Bitmap"></a>1).Bitmap</h4><h4 id="2-Shape"><a href="#2-Shape" class="headerlink" title="2).Shape"></a>2).Shape</h4><p>通过Shape可以在xml中绘制各种形状</p>
+<h4 id="3-Layer"><a href="#3-Layer" class="headerlink" title="3).Layer"></a>3).Layer</h4><p>可以通过layer，layer-list实现Photo中的图层效果，图片会依次叠加</p>
+<h4 id="4-Selector"><a href="#4-Selector" class="headerlink" title="4).Selector"></a>4).Selector</h4><p>作用在于实现静态绘图中的事件反馈，通过给不同的时间设置不同的图像，从而在程序中根据用户输入，返回不同的效果</p>
+<h3 id="4-Android绘图技巧"><a href="#4-Android绘图技巧" class="headerlink" title="4.Android绘图技巧"></a>4.Android绘图技巧</h3><h4 id="1-Canvas"><a href="#1-Canvas" class="headerlink" title="1).Canvas"></a>1).Canvas</h4><ul>
+<li>Canvas.save();将之前所有已经绘制的图像保存起来</li>
+<li>Canvas.restore();将在save()之后绘制的所有图像与save()之前的图像进行合并</li>
+<li>Canvas.translate();将原点移动到(x,y)，之后的绘图操作都将以(x,y)为原点执行，x,y代表的也是位移差，不是绝对坐标，也就是说如果之前是（10,10），那么translate(20,20)后不是移动到了（20,20）处，而是移动到了（30，30）处，位移累加效果</li>
+<li>Canvas.rotate();旋转画布</li>
+</ul>
+<h4 id="2-Layer图层"><a href="#2-Layer图层" class="headerlink" title="2).Layer图层"></a>2).Layer图层</h4><p>通过saveLayer()方法、saveLayerAlpha()方法将一个图层入栈，使用restore()、restoreToCount()方法将一个图层出栈</p>
+<h3 id="5-图像处理之色彩特效处理"><a href="#5-图像处理之色彩特效处理" class="headerlink" title="5.图像处理之色彩特效处理"></a>5.图像处理之色彩特效处理</h3><ul>
+<li>色调——物体传播的颜色</li>
+<li>饱和度——颜色的纯度，从0（灰）到100%（饱和）来进行描述</li>
+<li>亮度——颜色的相对明暗程度</li>
+</ul>
+<h4 id="1-色彩矩阵分析"><a href="#1-色彩矩阵分析" class="headerlink" title="1).色彩矩阵分析"></a>1).色彩矩阵分析</h4><p>在Android 中，系统使用一个颜色矩阵——ColorMatrix，来处理图像的这些色彩斑斓的效果。<br>$$<br>\left| \begin{matrix} a &amp; b &amp; c &amp; d &amp; e\ f &amp; g &amp; h &amp; i &amp; j \ k &amp; l &amp; m &amp; n &amp; o \ p &amp; q &amp; r &amp; s &amp; t \end{matrix} \right|<br>\left| \begin{matrix}R\G\B\A\1\end{matrix}\right|<br>=<br>\left| \begin{matrix} aR &amp; bG &amp; cB &amp; dA &amp; e\ fR &amp; gG &amp; hB &amp; iA &amp; j \ kR &amp; lG &amp; mB &amp; nA &amp; o \ pR &amp; qG &amp; rB &amp; sA &amp; t \end{matrix} \right|<br>=<br>\left|\begin{matrix}R1\G1\B1\A1\end{matrix}\right|<br>$$</p>
+<ul>
+<li>第一行的abcde值用来决定新的颜色值中的R–红色</li>
+<li>第二行的fghij值用来决定新的颜色值中的G–绿色</li>
+<li>第三行的klmno值用来决定新的颜色值中的B–蓝色</li>
+<li>第四行的pqrst值用来决定新的颜色值中的A–透明度</li>
+<li>矩阵中第五列ejot值分别用来决定每个分量中的offset,即偏移量</li>
+</ul>
+<p>初始的矩阵正常如下显示<br>$$<br>\left|\begin{matrix}1&amp;0&amp;0&amp;0&amp;0\0&amp;1&amp;0&amp;0&amp;0\0&amp;0&amp;1&amp;0&amp;0\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+<p>常用到的方法</p>
+<h5 id="a-改变偏移量"><a href="#a-改变偏移量" class="headerlink" title="a.改变偏移量"></a>a.改变偏移量</h5><p>例如红色和绿色各自增加100，最后图片显示偏黄<br>$$<br>\left|\begin{matrix}1&amp;0&amp;0&amp;0&amp;100\0&amp;1&amp;0&amp;0&amp;100\0&amp;0&amp;1&amp;0&amp;0\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+<h5 id="b-改变颜色系数"><a href="#b-改变颜色系数" class="headerlink" title="b.改变颜色系数"></a>b.改变颜色系数</h5><p>例如绿色系数调为2倍，最后图片偏绿<br>$$<br>\left|\begin{matrix}1&amp;0&amp;0&amp;0&amp;0\0&amp;2&amp;0&amp;0&amp;0\0&amp;0&amp;1&amp;0&amp;0\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+<h5 id="c-改变光属性"><a href="#c-改变光属性" class="headerlink" title="c.改变光属性"></a>c.改变光属性</h5><ul>
+<li><p>色调</p>
+<p>ColorMartix提供了setRotate(int axis,float degree)来帮助我们设置颜色的色调，第一参数，系统分别用0，1，2来表示RGB三种颜色的处理，第二个参数就是需要处理的值</p>
+</li>
+<li><p>饱和度</p>
+<p>ColorMartix提供了setSaturatuin(float sat)方法来设置颜色的饱和度，参数即代表设置颜色的饱和度的值，当饱和度为0时，图像就变成灰度图像了</p>
+</li>
+<li><p>亮度</p>
+<p>当三原色以相同的比例进行混合时，就会显示出白色，当亮度为0时，图像就变成全黑的了</p>
+</li>
+</ul>
+<h4 id="2-Android颜色矩阵——ColorMatrix"><a href="#2-Android颜色矩阵——ColorMatrix" class="headerlink" title="2).Android颜色矩阵——ColorMatrix"></a>2).Android颜色矩阵——ColorMatrix</h4><p>调整颜色矩阵可以改变一幅图像的色彩效果，图像处理很大程度上就是在寻找处理图像的颜色矩阵</p>
+<h4 id="3-常用图像颜色矩阵处理效果"><a href="#3-常用图像颜色矩阵处理效果" class="headerlink" title="3).常用图像颜色矩阵处理效果"></a>3).常用图像颜色矩阵处理效果</h4><ul>
+<li><p>灰度效果<br>$$<br>\left|\begin{matrix}0.33F&amp;0.59F&amp;0.11F&amp;0&amp;0\0.33F&amp;0.59F&amp;0.11F&amp;0&amp;0\0.33F&amp;0.59F&amp;0.11F&amp;0&amp;0\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+</li>
+<li><p>图像反转<br>$$<br>\left|\begin{matrix}-1&amp;0&amp;0&amp;0&amp;0\0&amp;-1&amp;0&amp;0&amp;0\0&amp;0&amp;-1&amp;0&amp;0\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+</li>
+<li><p>怀旧效果<br>$$<br>\left|\begin{matrix}0.393F&amp;0.769F&amp;0.189F&amp;0&amp;0\0.349F&amp;0.686F&amp;0.168F&amp;0&amp;0\0.272F&amp;0.534F&amp;0.131F&amp;0&amp;0\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+</li>
+<li><p>去色效果<br>$$<br>\left|\begin{matrix}1.5F&amp;1.5F&amp;1.5F&amp;0&amp;-1\1.5F&amp;1.5F&amp;1.5F&amp;0&amp;-1\1.5F&amp;1.5F&amp;1.5F&amp;0&amp;-1\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+</li>
+<li><p>高饱和度<br>$$<br>\left|\begin{matrix}1.438F&amp;-0.122F&amp;-0.016F&amp;0&amp;-0.03F\-0.062F&amp;1.378F&amp;-0.016F&amp;0&amp;0.05F\-0.062F&amp;-0.122F&amp;1.438F&amp;0&amp;-0.02F\0&amp;0&amp;0&amp;1&amp;0\end{matrix}\right|<br>$$</p>
+</li>
+</ul>
+<h4 id="4-像素点分析"><a href="#4-像素点分析" class="headerlink" title="4).像素点分析"></a>4).像素点分析</h4><p>系统提供了Bitmap.getPixels()方法来帮助我们提取整个Bitmap中的像素点，并保存到一个数组中，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitmap.getPixels(pixels,offset,stride,x,y,width,height)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pixels——接收位图颜色值的数组</li>
+<li>offset——写入到pixels[]中的第一个像素索引值</li>
+<li>stride——pixels[]中的行间距</li>
+<li>x——从位图中读取的第一个像素的x坐标值</li>
+<li>y——从位图中读取的第一个像素的y坐标值</li>
+<li>width——从每一行中读取的像素宽度</li>
+<li>height——读取的行数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bitmap.getPixels(oldPx,<span class="number">0</span>,bm.getWidth(),<span class="number">0</span>,<span class="number">0</span>,width,height);</span><br><span class="line">color = oldPx[i];</span><br><span class="line">r = Color.red(color);</span><br><span class="line">g = Color.green(color);</span><br><span class="line">b = Color.blue(color);</span><br><span class="line">a = Color.alpha(color);</span><br></pre></td></tr></table></figure>
+
+<p>可以对每个点进行颜色处理合成新像素点</p>
+<p>最后将处理之后的像素点数组调用setPixels方法重新set给我们的Bitmap,达到处理图像的目的</p>
+<h4 id="5-常用图像像素点处理效果"><a href="#5-常用图像像素点处理效果" class="headerlink" title="5).常用图像像素点处理效果"></a>5).常用图像像素点处理效果</h4><ul>
+<li><p>底片效果：对应的颜色分别用255减去初始值后再赋值</p>
+</li>
+<li><p>老照片效果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r1 = (<span class="keyword">int</span>)(<span class="number">0.393</span>*r + <span class="number">0.769</span>*g + <span class="number">0.189</span>*b);</span><br><span class="line">g1 = (<span class="keyword">int</span>)(<span class="number">0.349</span>*r + <span class="number">0.686</span>*g + <span class="number">0.168</span>*b);</span><br><span class="line">b1 = (<span class="keyword">int</span>)(<span class="number">0.272</span>*r + <span class="number">0.534</span>*g + <span class="number">0.131</span>*b);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>浮雕效果:若存在ABC三个像素点，要对B点对应的浮雕效果，代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B.r = C.r - B.r + <span class="number">127</span>;</span><br><span class="line">B.g = C.g - B.g + <span class="number">127</span>;</span><br><span class="line">B.b = C.b - B.b + <span class="number">127</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="6-图像处理之图形特效处理"><a href="#6-图像处理之图形特效处理" class="headerlink" title="6.图像处理之图形特效处理"></a>6.图像处理之图形特效处理</h3><h4 id="1-Android变形矩阵——Matrix"><a href="#1-Android变形矩阵——Matrix" class="headerlink" title="1).Android变形矩阵——Matrix"></a>1).Android变形矩阵——Matrix</h4><p>默认的图像变换矩阵初始为<br>$$<br>\left|\begin{matrix}1&amp;0&amp;0\0&amp;1&amp;0\0&amp;0&amp;1\end{matrix}\right|<br>$$</p>
+<p>矩阵变换规律：<br>$$<br>\left|\begin{matrix}Scale_X&amp;Skew_X&amp;Trans_X\Scale_Y&amp;Skew_Y&amp;Trans_Y\0&amp;0&amp;1\end{matrix}\right|<br>$$</p>
+<ul>
+<li>A和E控制Scale——缩放变换</li>
+<li>B和D控制Skew——错切变换</li>
+<li>C和F控制Trans——平移变换</li>
+<li>A、B、C、D共同控制Rotate——旋转变换</li>
+</ul>
+<h5 id="a-平移变换：将每个像素点都进行平移交换"><a href="#a-平移变换：将每个像素点都进行平移交换" class="headerlink" title="a.平移变换：将每个像素点都进行平移交换"></a>a.平移变换：将每个像素点都进行平移交换</h5><p>$$<br>\left|\begin{matrix}X_1\Y_1\1\end{matrix}\right|=\left|\begin{matrix}1&amp;0&amp;△x\0&amp;1&amp;△y\0&amp;0&amp;1\end{matrix}\right|\left|\begin{matrix}X_0\Y_0\1\end{matrix}\right|<br>$$</p>
+<h5 id="b-旋转变换：指一个点围绕一个旋转中心旋转到一个新的点"><a href="#b-旋转变换：指一个点围绕一个旋转中心旋转到一个新的点" class="headerlink" title="b.旋转变换：指一个点围绕一个旋转中心旋转到一个新的点"></a>b.旋转变换：指一个点围绕一个旋转中心旋转到一个新的点</h5><p>$$<br>\left|\begin{matrix}X_1\Y_1\1\end{matrix}\right|=\left|\begin{matrix}cosθ&amp;-sinθ&amp;0\sinθ&amp;cosθ&amp;0\0&amp;0&amp;1\end{matrix}\right|\left|\begin{matrix}X_0\Y_0\1\end{matrix}\right|<br>$$</p>
+<p>如果以任意点O为旋转中心来进行旋转变换，通常需要下面三步骤：</p>
+<ul>
+<li>将坐标原点平移到O点</li>
+<li>使用前面讲的以坐标原点为中心的旋转方法进行旋转变换</li>
+<li>将坐标原点还原</li>
+</ul>
+<h5 id="c-缩放变换：将每个点的坐标都进行相同比例的缩放，最终就会形成让整个图像缩放的效果"><a href="#c-缩放变换：将每个点的坐标都进行相同比例的缩放，最终就会形成让整个图像缩放的效果" class="headerlink" title="c.缩放变换：将每个点的坐标都进行相同比例的缩放，最终就会形成让整个图像缩放的效果"></a>c.缩放变换：将每个点的坐标都进行相同比例的缩放，最终就会形成让整个图像缩放的效果</h5><p>$$<br>\left|\begin{matrix}X_1\Y_1\1\end{matrix}\right|=\left|\begin{matrix}K_1&amp;0&amp;0\0&amp;K_2&amp;0\0&amp;0&amp;1\end{matrix}\right|\left|\begin{matrix}X_0\Y_0\1\end{matrix}\right|<br>$$</p>
+<h5 id="d-错切变换：将所有点的X坐标（或者Y坐标）保持不变，对应的Y坐标（或者X坐标）按照比例进行平移，且平移的大小和该点到X轴（或者Y轴）的垂直距离成正比"><a href="#d-错切变换：将所有点的X坐标（或者Y坐标）保持不变，对应的Y坐标（或者X坐标）按照比例进行平移，且平移的大小和该点到X轴（或者Y轴）的垂直距离成正比" class="headerlink" title="d.错切变换：将所有点的X坐标（或者Y坐标）保持不变，对应的Y坐标（或者X坐标）按照比例进行平移，且平移的大小和该点到X轴（或者Y轴）的垂直距离成正比"></a>d.错切变换：将所有点的X坐标（或者Y坐标）保持不变，对应的Y坐标（或者X坐标）按照比例进行平移，且平移的大小和该点到X轴（或者Y轴）的垂直距离成正比</h5><p>$$<br>\left|\begin{matrix}X_1\Y_1\1\end{matrix}\right|=\left|\begin{matrix}1&amp;K_1&amp;0\K_2&amp;1&amp;0\0&amp;0&amp;1\end{matrix}\right|\left|\begin{matrix}X_0\Y_0\1\end{matrix}\right|<br>$$</p>
+<h4 id="2-像素块分析"><a href="#2-像素块分析" class="headerlink" title="2).像素块分析"></a>2).像素块分析</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drawBitmapMesh(<span class="meta">@NonNull</span> Bitmap bitmap, <span class="keyword">int</span> meshWidth, <span class="keyword">int</span> meshHeight,</span><br><span class="line">        <span class="meta">@NonNull</span> <span class="keyword">float</span>[] verts, <span class="keyword">int</span> vertOffset, <span class="meta">@Nullable</span> <span class="keyword">int</span>[] colors, <span class="keyword">int</span> colorOffset,</span><br><span class="line">        <span class="meta">@Nullable</span> Paint paint)</span><br></pre></td></tr></table></figure>
+
+<p>该方法的关键参数如下：</p>
+<ul>
+<li>bitmap：将要扭曲的图像</li>
+<li>meshWidth：需要的横向网格数目</li>
+<li>meshHeight：需要的纵向网格数目</li>
+<li>verts：网格交叉点坐标数组</li>
+<li>vertOffset：verts数组中开始跳过的(x,y)坐标对的数目</li>
+</ul>
+<h3 id="7-图像处理之画笔特效处理"><a href="#7-图像处理之画笔特效处理" class="headerlink" title="7.图像处理之画笔特效处理"></a>7.图像处理之画笔特效处理</h3><h4 id="1-PorterDuffXfermode"><a href="#1-PorterDuffXfermode" class="headerlink" title="1).PorterDuffXfermode"></a>1).PorterDuffXfermode</h4><p>类似于数学中的交集和并集，控制的是两个图像间的混合显示模式，dst是先画的图形，src是后画的图形</p>
+<img src="img/1.png" alt="1" style="zoom:30%;" />
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test1);</span><br><span class="line">mOut = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Bitmap.Config.ARGB_8888);</span><br><span class="line">Canvas canvas = <span class="keyword">new</span> Canvas(mOut);</span><br><span class="line">mPaint = <span class="keyword">new</span> Paint();</span><br><span class="line">mPaint.setAntiAlias(<span class="keyword">true</span>);</span><br><span class="line">canvas.drawRoundRect(<span class="number">0</span>, <span class="number">0</span>, mBitmap.getWidth(), mBitmap.getHeight(), <span class="number">180</span>, <span class="number">180</span>, mPaint);</span><br><span class="line">mPaint.setXfermode(<span class="keyword">new</span> PorterDuffXfermode(PorterDuff.Mode.SRC_IN));</span><br><span class="line">canvas.drawBitmap(mBitmap,<span class="number">0</span>,<span class="number">0</span>,mPaint);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Shader"><a href="#2-Shader" class="headerlink" title="2).Shader"></a>2).Shader</h4><ul>
+<li>BitmapShaper——位图Shader</li>
+<li>LinearGradient——线性Shader</li>
+<li>RadialGradient——光束Shader</li>
+<li>SweepGradient——梯度Shader</li>
+<li>ComposeShader——混合Shader</li>
+</ul>
+<p>除了BitmapShader，其余的都是渐变渲染效果。BitmapShader产生的是一个图像，通过Paint对 画布进行指定Bitmap填充，填充有以下几种模式可以选择</p>
+<ul>
+<li>CLAMP拉伸——拉伸的是图片最后的一个像素，不断重复</li>
+<li>REPEAT重复——横向、纵向不断重复</li>
+<li>MIRROR镜像——横向不断翻转重复，纵向不断翻转重复</li>
+</ul>
+<h4 id="3-PathEffect"><a href="#3-PathEffect" class="headerlink" title="3).PathEffect"></a>3).PathEffect</h4><ul>
+<li><p><strong>CornerPathEffect</strong></p>
+<p>CornerPathEffect则可以将路径的转角变得圆滑，CornerPathEffect的构造方法只接受一个参数radius，意思就是转角处的圆滑程度</p>
+</li>
+<li><p><strong>DiscretePathEffect</strong></p>
+<p>DiscretePathEffect（离散路径效果）相对来说则稍微复杂点，其会在路径上绘制很多“杂点”的突出来模拟一种类似生锈铁丝的效果。其构造方法有两个参数：</p>
+<blockquote>
+<p>第一个参数指定这些突出的“杂点”的密度，值越小杂点越密集；</p>
+<p>第二个参数则是“杂点”突出的大小，值越大突出的距离越大反之反之。</p>
+</blockquote>
+</li>
+<li><p><strong>DashPathEffect</strong></p>
+<p>DashPathEffect可以用来绘制虚线，主要有两个参数</p>
+<blockquote>
+<p>第一个参数为数组用来设置各个点之间的间隔，按照实线虚线交叉设置，后面绘制虚线会重复这样的间隔</p>
+<p>第二个参数phase用来控制绘制时数组的一个偏移量，可以通过这个设置来实现路径的动态效果</p>
+</blockquote>
+</li>
+<li><p><strong>PathDashPathEffect</strong></p>
+<p>PathDashPathEffect和DashPathEffect类似，不过功能更多，可以设置点的图形，比如方形点和圆形点</p>
+</li>
+<li><p><strong>ComposePathEffect和SumPathEffect</strong></p>
+<p>ComposePathEffect和SumPathEffect都可以用来组合两种路径效果，就是把两种效果二合一。唯一不同的是组合的方式：</p>
+<p>ComposePathEffect(PathEffect outerpe, PathEffect innerpe)会先将路径变成innerpe的效果，再去复合outerpe的路径效果，即：outerpe(innerpe(Path))；</p>
+<p>SumPathEffect(PathEffect first, PathEffect second)则会把两种路径效果加起来再作用于路径。</p>
+</li>
+</ul>
+<h3 id="8-View之孪生兄弟——SurfaceView"><a href="#8-View之孪生兄弟——SurfaceView" class="headerlink" title="8.View之孪生兄弟——SurfaceView"></a>8.View之孪生兄弟——SurfaceView</h3><h4 id="1-SurfaceView与View的区别"><a href="#1-SurfaceView与View的区别" class="headerlink" title="1).SurfaceView与View的区别"></a>1).SurfaceView与View的区别</h4><ul>
+<li>View主要适用于主动更新的情况下，而SurfaceView主要适用于被动更新，比如频繁刷新</li>
+<li>View在主线程中对画面进行刷新，SurfaceView通常会通过一个子线程来进行页面的刷新</li>
+<li>View在绘图时没有使用双缓冲机制，SurfaceView在底层就已经实现了双缓冲机制</li>
+</ul>
+<h4 id="2-SurfaceView的使用"><a href="#2-SurfaceView的使用" class="headerlink" title="2).SurfaceView的使用"></a>2).SurfaceView的使用</h4><ul>
+<li><p>创建SurfaceView</p>
+<p>创建自定义的SurfaceView需要继承自SurfaceView ，并且需要实现两个接口SurfaceHolder.Callback(分别对应创建、改变和销毁)和Runnable</p>
+</li>
+<li><p>初始化SurfaceView</p>
+<p>在自定义SurfaceView的构造方法中，需要进行初始化，通常需要定义以下三个成员变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SurfaceHolder</span></span><br><span class="line"><span class="keyword">private</span> SurfaceHolder mHolder;</span><br><span class="line"><span class="comment">//用于绘图的Canvas</span></span><br><span class="line"><span class="keyword">private</span> Canvas mCanvas;</span><br><span class="line"><span class="comment">//子线程标志位</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> mIsDrawing;</span><br></pre></td></tr></table></figure>
+
+<p>初始化方法就是对SurfaceHolder进行初始化，可以通过以下代码初始化一个SurfaceHolder对象，并注册SurfaceHolder的回调方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mHolder = getHolder();</span><br><span class="line">mHolder.addCallback(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用SurfaceView</p>
+<p>在SurfaveView回调方法surfaceCreated方法中开启子线程进行绘制，子线程使用一个while(mIsDrawing)来循环不停的进行绘制，在绘制的具体逻辑中，通过lockCanvas()方法获得Canvas对象进行绘制（该对象还是继续上次的Canvas对象，如果需要擦除，可以调用drawColor()方法进行清屏操作），并通过unlockCanvasAndPost(mCanvas)方法对画布内容进行提交</p>
+</li>
+</ul>
+<h2 id="七、动画机制与使用技巧"><a href="#七、动画机制与使用技巧" class="headerlink" title="七、动画机制与使用技巧"></a>七、动画机制与使用技巧</h2><h3 id="1-Android-View-动画框架"><a href="#1-Android-View-动画框架" class="headerlink" title="1.Android View 动画框架"></a>1.Android View 动画框架</h3><blockquote>
+<p>动画框架产生的动画不能改变事件相应的位置</p>
+</blockquote>
+<h4 id="1-透明度动画"><a href="#1-透明度动画" class="headerlink" title="1).透明度动画"></a>1).透明度动画</h4><p>为视图增加透明度的变换动画</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AlphaAnimation aa = <span class="keyword">new</span> AlphaAnimation(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">aa.setDuration(<span class="number">1000</span>);</span><br><span class="line">view.startAnimation(aa);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-旋转动画"><a href="#2-旋转动画" class="headerlink" title="2).旋转动画"></a>2).旋转动画</h4><p>为视图增加旋转的变换动画,参数分别为旋转的起始角度和旋转中心点的坐标</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">RotateAnimation ra1 = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>,<span class="number">360</span>,<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">ra1.setDuration(<span class="number">1000</span>);</span><br><span class="line">view.startAnimation(ra1);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置旋转参考系为自身中心点</span></span><br><span class="line">RotateAnimation ra2 = <span class="keyword">new</span> RotateAnimation(<span class="number">0</span>,<span class="number">360</span>,</span><br><span class="line">                                          RotateAnimation.RELATIVE_TO_SELF,<span class="number">0.5F</span>,</span><br><span class="line">                                          RotateAnimation.RELATIVE_TO_SELF,<span class="number">0.5F</span>);</span><br><span class="line">ra2.setDuration(<span class="number">1000</span>);</span><br><span class="line">view.startAnimation(ra2);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-位移动画"><a href="#3-位移动画" class="headerlink" title="3).位移动画"></a>3).位移动画</h4><p>为视图移动时增加位移动画</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation ta = <span class="keyword">new</span> TranslateAnimation(<span class="number">0</span>,<span class="number">200</span>,<span class="number">0</span>,<span class="number">300</span>);</span><br><span class="line">ta.setDuration(<span class="number">1000</span>);</span><br><span class="line">view.startAnimation(ta);</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-缩放动画"><a href="#4-缩放动画" class="headerlink" title="4).缩放动画"></a>4).缩放动画</h4><p>为视图的缩放增加动画效果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ScaleAnimation sa = <span class="keyword">new</span> ScaleAnimation(<span class="number">0</span>,<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line">sa.setDuration(<span class="number">1000</span>);</span><br><span class="line">view.startAnimation(sa);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置以自身中心为缩放的中心点</span></span><br><span class="line">ScaleAnimation sa2 = <span class="keyword">new</span> ScaleAnimation(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span></span><br><span class="line">                                       Animation.RELATIVE_TO_SELF,<span class="number">0.5F</span>,</span><br><span class="line">                                       Animation.RELATIVE_TO_SELF,<span class="number">0.5F</span>);</span><br><span class="line">sa2.setDuration(<span class="number">1000</span>);</span><br><span class="line">view.startAnimation(sa2);</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-动画集合"><a href="#5-动画集合" class="headerlink" title="5).动画集合"></a>5).动画集合</h4><p>通过AnimationSet,可以将动画以组合的形式展现出来，通过设置AnimationListener,可以针对动画的开始，结束和重复事件作出不同的处理</p>
+<h3 id="2-Android属性动画分析"><a href="#2-Android属性动画分析" class="headerlink" title="2.Android属性动画分析"></a>2.Android属性动画分析</h3><p>在Animator框架中使用最多的就是AnimatorSet和ObjectAnimator配合，使用ObjectAnimator进行更精细化控制，只控制一个对象的一个属性值，使用多个ObjectAnimator组合AnimatorSet形成一个动画。</p>
+<h4 id="1-ObjectAnimator"><a href="#1-ObjectAnimator" class="headerlink" title="1).ObjectAnimator"></a>1).ObjectAnimator</h4><p>创建一个ObjectAnimator对象只需要通过他的静态工厂类之间返回一个ObjectAnimator对象。参数包括一个对象和对象的属性名字，这个属性必须有get和set函数，内部会通过反射机制来调用set函数修改对象属性值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator anim = ObjectAnimator.ofFloat(view,<span class="string">"translationX"</span>,<span class="number">300</span>);</span><br><span class="line">anim.setDuration(<span class="number">300</span>);</span><br><span class="line">anim.start();</span><br></pre></td></tr></table></figure>
+
+<p>常用的可以直接使用属性动画的属性值：</p>
+<ul>
+<li>translationX和translationY:这两个属性作为一种增量来控制着View对象从它布局容器的左上角坐标开始的位置</li>
+<li>rotation、rotationX和rotationY:这三个属性控制着View对象围绕支点进行2D和3D旋转</li>
+<li>scaleX和scaleY:这两个属性控制着View对象围绕它的支点进行2D缩放</li>
+<li>piovtX和pivotY:这两个属性控制着View对象的支点位置，围绕这个支点进行旋转和缩放变换处理。默认情况下，支点的位置就是View对象的中心点</li>
+<li>x和y:这是两个简单实用的属性，描述了View对象在它的容器中的最终位置，是最初的左上角坐标和translationX、translationY值的累计和</li>
+<li>alpha:它表示View对象的alpha透明度。默认值是1（不透明），0代表完全透明</li>
+</ul>
+<h4 id="2-PropertyValuesHolder"><a href="#2-PropertyValuesHolder" class="headerlink" title="2).PropertyValuesHolder"></a>2).PropertyValuesHolder</h4><p>类似视图动画中的AnimationSet，在属性动画中，如果针对同一个对象的多个属性，要同时作用多种动画，可以使用PropertyValuesHolder来实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PropertyValuesHolder pvh1 = PropertyValuesHolder.ofFloat(<span class="string">"tanslationX"</span>,<span class="number">300f</span>);</span><br><span class="line">PropertyValuesHolder pvh2 = PropertyValuesHolder.ofFloat(<span class="string">"scaleX"</span>,<span class="number">1f</span>,<span class="number">0</span>,<span class="number">1f</span>);</span><br><span class="line">PropertyValuesHolder pvh3 = PropertyValuesHolder.ofFloat(<span class="string">"scaleY"</span>,<span class="number">1f</span>,<span class="number">0</span>,<span class="number">1f</span>);</span><br><span class="line">ObjectAnimator.ofPropertyValuesHolder(view,pvh1,pvh2,pvh3).setDuration(<span class="number">1000</span>).start()</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-ValueAnimator"><a href="#3-ValueAnimator" class="headerlink" title="3).ValueAnimator"></a>3).ValueAnimator</h4><p>ValueAnimator本身不提供任何动画效果，更像是一个数值发生器，用来产生具有一定规律的数字，从而让调用者来控制动画的实现过程。在AnimatorUpdateListener中监听数值的变换，从而完成动画的变换</p>
+<h4 id="4-动画事件的监听"><a href="#4-动画事件的监听" class="headerlink" title="4).动画事件的监听"></a>4).动画事件的监听</h4><p>一个完整的动画具有Start、Repeat、End、Cancel四个过程，通过Android提供了接口，可以很方便的监听四个事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ObjectAnimator anim = ObjectAnimator.ofFloat(view,<span class="string">"alpha"</span>,<span class="number">0.5f</span>);</span><br><span class="line">        anim.addListener(<span class="keyword">new</span> Animator.AnimatorListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationStart</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationEnd</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationCancel</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationRepeat</span><span class="params">(Animator animation)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        anim.start();</span><br></pre></td></tr></table></figure>
+
+<p>如果只对部分过程监听，可以使用AnimatorListenerAdapter进行监听</p>
+<h4 id="5-AnimatorSet"><a href="#5-AnimatorSet" class="headerlink" title="5).AnimatorSet"></a>5).AnimatorSet</h4><p>AnimatorSet可以通过playTogether()、playSequentially()、animSet.play().with()、play().with()、play().before()、play().after()这些方法控制多个动画的协同工作方式，从而做到对动画播放顺序的精确控制。</p>
+<h4 id="6-在XML中使用属性动画"><a href="#6-在XML中使用属性动画" class="headerlink" title="6).在XML中使用属性动画"></a>6).在XML中使用属性动画</h4><p>属性动画同视图动画一样，也可以直接写在XML文件中,在res/animator目录下，如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">objectAnimator</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:duration</span>=<span class="string">"1000"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:propertyName</span>=<span class="string">"scaleX"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:valueFrom</span>=<span class="string">"1.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:valueTo</span>=<span class="string">"2.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:valueType</span>=<span class="string">"floatType"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">objectAnimator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在程序中使用方式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">scaleX</span><span class="params">(View view)</span></span>&#123;</span><br><span class="line">  Animator anim = AnimatorInflater.loadAnimator(<span class="keyword">this</span>,R.animator.scalex);</span><br><span class="line">  anim.setTarget(mView);</span><br><span class="line">  anim.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-View的animate方法"><a href="#7-View的animate方法" class="headerlink" title="7).View的animate方法"></a>7).View的animate方法</h4><p>可以认为是属性动画的简写方式，如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">view.animate()</span><br><span class="line">                .alpha(<span class="number">0</span>)</span><br><span class="line">                .y(<span class="number">300</span>)</span><br><span class="line">                .setDuration(<span class="number">500</span>)</span><br><span class="line">                .withStartAction(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .withEndAction(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                        </span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .start();</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Android布局动画"><a href="#3-Android布局动画" class="headerlink" title="3.Android布局动画"></a>3.Android布局动画</h3><p>在ViewGroup的XML中，可以用一下代码打开布局动画，显示默认的过渡效果，无法替换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:animateLayoutChanges=<span class="string">"true"</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以通过使用LayoutAnimationController类来自定义一个子View的过渡效果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">LinearLayout ll = findViewById(R.id.ll);</span><br><span class="line">ScaleAnimation sa = <span class="keyword">new</span> ScaleAnimation(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">sa.setDuration(<span class="number">2000</span>);</span><br><span class="line">LayoutAnimationController lac = <span class="keyword">new</span> LayoutAnimationController(sa, <span class="number">0.5F</span>);</span><br><span class="line">lac.setOrder(LayoutAnimationController.ORDER_NORMAL);</span><br><span class="line">ll.setLayoutAnimation(lac);</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数是需要作用的动画，第二个参数，是每个子View显示的delay时间，时间不为0时，可以设置子View显示的顺序：</p>
+<ul>
+<li>LayoutAnimationController.ORDER_NORMAL——顺序</li>
+<li>LayoutAnimationController.ORDER_RANDOM——随机</li>
+<li>LayoutAnimationController.ORDER_REVERSE——反序</li>
+</ul>
+<h3 id="4-Interpolators（插值器）"><a href="#4-Interpolators（插值器）" class="headerlink" title="4.Interpolators（插值器）"></a>4.Interpolators（插值器）</h3><p>在ValueAnimator中使用插值器可以直接调用setInterpolator(TimeInterpolator value)函数，可以根据需求自己定义插值器，只需要实现TimeInterpolator接口就行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterpolator</span> <span class="keyword">implements</span> <span class="title">TimeInterpolator</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> - input;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-自定义动画"><a href="#5-自定义动画" class="headerlink" title="5.自定义动画"></a>5.自定义动画</h3><p>自定义动画需要继承Animation类，然后实现applyTransformation(float interpolatedTime, Transformation t)方法就可以，正常情况下还需要覆盖父类的initialize来实现一些初始化工作</p>
+<ul>
+<li><p>第一个参数interpolatedTime就是插值器的时间因子，这个因子是由动画当前完成的百分比和当前时间所对应的插值所计算得到的，取值范围为0到1.0</p>
+</li>
+<li><p>第二个参数Transformation是矩阵的封装类，一般可以使用这个类来获得当前的矩阵对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Matrix matrix = t.getMatrix();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>例如实现电视机的关闭效果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mCenterWidth,mCenterHeight是缩放点的中心</span></span><br><span class="line">matrix.preScale(<span class="number">1</span>,<span class="number">1</span>-interpolatedTime,mCenterWidth,mCenterHeight);</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-SVG矢量动画机制"><a href="#6-SVG矢量动画机制" class="headerlink" title="6.SVG矢量动画机制"></a>6.SVG矢量动画机制</h3><ul>
+<li>可伸缩矢量图形（Scalable Vector Graphics）</li>
+<li>定义用于网络的基于矢量的图形</li>
+<li>使用XML格式定义图形</li>
+<li>图像在放大或者改变尺寸的情况下其图形质量不会有所损失</li>
+<li>万维网联盟的标准</li>
+<li>与诸如DOM和XSL之类的W3C标准是一个整体</li>
+</ul>
+<h4 id="1-lt-path-gt-标签"><a href="#1-lt-path-gt-标签" class="headerlink" title="1).&lt;path&gt;标签"></a>1).&lt;path&gt;标签</h4><p>标签pathData属性支持的指令有以下几种</p>
+<ul>
+<li>M=moveto(M X,Y)：将画笔移动到指定的坐标位置，但未发生绘制</li>
+<li>L=lineto(L X,Y)：画直线到指定的坐标位置</li>
+<li>H=horizontal lineto(H X)：画水平线到指定的X坐标位置</li>
+<li>V=vertical lineto(V Y)：画垂直线到指定的Y坐标位置</li>
+<li>C=curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝塞曲线</li>
+<li>S=smooth curveto(S X2,Y2,ENDX,ENDY)：三次贝塞曲线（将上一条的指令终点作为这条指令的起始点）</li>
+<li>Q=quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝塞曲线</li>
+<li>T=smooth quadratic Belzier curveto(T ENDX,ENDY)：映射前面路径后的终点</li>
+<li>A=elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线</li>
+<li>Z=closepath()：关闭路径</li>
+</ul>
+<blockquote>
+<p>使用时需要注意，指令可以大小写，大写表示绝对定位，参照全局坐标系，小写表示相对定位，参照父容器的坐标系；指令和数据间的空格可以省略；同一个指令出现多次可以只用一个</p>
+</blockquote>
+<h2 id="八、Activity与Activity调用栈分析"><a href="#八、Activity与Activity调用栈分析" class="headerlink" title="八、Activity与Activity调用栈分析"></a>八、Activity与Activity调用栈分析</h2><h3 id="1-Activity"><a href="#1-Activity" class="headerlink" title="1.Activity"></a>1.Activity</h3><p>Activity的形态</p>
+<ul>
+<li><p>Active/Running</p>
+<p>这时候，Activity处于Activity 栈的最顶层，可见并与用户进行交互</p>
+</li>
+<li><p>Paused</p>
+<p>Activity失去焦点时为Paused状态，只是失去了与用户交互的能力，所有状态信息，成员变量都还保持着</p>
+</li>
+<li><p>Stopped</p>
+<p>此时不再可见，依然保持了所有状态信息和成员变量</p>
+</li>
+<li><p>Killed</p>
+<p>被系统回收掉或者没有创建的时候就是这个状态</p>
+</li>
+</ul>
+<p>Activity生命周期如下：</p>
+<img src="img/activity生命周期.jpg" style="zoom:60%;" />
+
+
+
+<h3 id="2-Android任务栈"><a href="#2-Android任务栈" class="headerlink" title="2.Android任务栈"></a>2.Android任务栈</h3><p>当一个App启动时，如果当前环境中不存在该App的任务栈，那么系统就会创建一个任务栈。此后，这个App所启动的Activity都将在这个任务栈中你那个被管理，这个栈也被称为一个Task</p>
+<h3 id="3-Activity启动模式"><a href="#3-Activity启动模式" class="headerlink" title="3.Activity启动模式"></a>3.Activity启动模式</h3><h4 id="1-standard"><a href="#1-standard" class="headerlink" title="1).standard"></a>1).standard</h4><p>未指定的Activity都以这个模式启动，每次都会创建新的实例</p>
+<h4 id="2-singleTop"><a href="#2-singleTop" class="headerlink" title="2).singleTop"></a>2).singleTop</h4><p>在启动时，系统会判断当前启动的Activity是否处于栈顶，如果在，不创建新的，直接引用这个Activity，如果不处于则创建新的Activity</p>
+<h4 id="3-singleTask"><a href="#3-singleTask" class="headerlink" title="3).singleTask"></a>3).singleTask</h4><p>检测整个Activity栈中是否存在当前需要启动的Activity,如果存在，则将该Activity置于栈顶，以上的Activity全部销毁,会调用该Activity的on new Intent()方法，只有一个实例</p>
+<h4 id="4-singeInstance"><a href="#4-singeInstance" class="headerlink" title="4).singeInstance"></a>4).singeInstance</h4><p>单独一个栈，并且只有单独一个实例</p>
+<h3 id="4-Intent-Flag启动模式"><a href="#4-Intent-Flag启动模式" class="headerlink" title="4.Intent Flag启动模式"></a>4.Intent Flag启动模式</h3><p>通过设置Intent的Flag来设置一个Activity的启动模式，常用的有：</p>
+<ul>
+<li><p>Intent.FLAG_ACTIVITY_NEW_TASK</p>
+<p>使用一个新的Task来启动一个Activity,但启动的每个Activity都将在一个新的Task中，通常用于从Service启动Activity</p>
+</li>
+<li><p>Intent.FLAG_ACTIVITY_SINGLE_TOP</p>
+<p>与指定launchMode为singleTop效果相同</p>
+</li>
+<li><p>Intent.FLAG_ACTIVITY_CLEAR_TOP</p>
+<p>与指定launchMode为singleTask效果相同</p>
+</li>
+<li><p>Intent.FLAG_ACTIVITY_NO_HISTORY</p>
+<p>使用这种模式启动Activity，当该Activity启动其他Activity后，就会消失，不会保留在栈中</p>
+</li>
+</ul>
+<h3 id="5-清空任务栈"><a href="#5-清空任务栈" class="headerlink" title="5.清空任务栈"></a>5.清空任务栈</h3><p>可以在AndroidMainifest文件的&lt;activity&gt;标签中使用以下几种属性来清理任务栈</p>
+<ul>
+<li>clearTaskOnLaunch：每次返回该Activity时，都将之上的所有Activity清除</li>
+<li>finishOnTaskLaunch：离开该Activity所处的Task，那么用户再返回时，该Activity会被finish掉</li>
+<li>alwaysRetainState：如果将Activity的这个属性设置为True，那么该Activity所在的Task将不接受任何清理命令，一直保持当前Task状态</li>
+</ul>
+<h2 id="九、Android系统信息与安全机制"><a href="#九、Android系统信息与安全机制" class="headerlink" title="九、Android系统信息与安全机制"></a>九、Android系统信息与安全机制</h2><h3 id="1-Android系统信息获取"><a href="#1-Android系统信息获取" class="headerlink" title="1.Android系统信息获取"></a>1.Android系统信息获取</h3><h4 id="1-android-os-Build"><a href="#1-android-os-Build" class="headerlink" title="1).android.os.Build"></a>1).android.os.Build</h4><ul>
+<li>Build.BOARD // 主板  </li>
+<li>Build.CPU_ABI // cpu指令集  </li>
+<li>Build.DEVICE // 设备参数  </li>
+<li>Build.DISPLAY // 显示屏参数  </li>
+<li>Build.FINGERPRINT // 硬件名称  </li>
+<li>Build.HOST // Host值  </li>
+<li>Build.ID // 修订版本列表  </li>
+<li>Build.MANUFACTURER // 硬件制造商  </li>
+<li>Build.MODEL // 版本  </li>
+<li>Build.PRODUCT // 手机制造商  </li>
+<li>Build.TAGS // 描述build的标签  </li>
+<li>Build.TIME // 编译时间 </li>
+<li>Build.TYPE // builder类型  </li>
+<li>Build.USER // User名</li>
+</ul>
+<h4 id="2-SystemProperty"><a href="#2-SystemProperty" class="headerlink" title="2).SystemProperty"></a>2).SystemProperty</h4><p>通过System.getProperty(“XXX”)可以获取许多系统配置属性值和参数，常用的如下</p>
+<ul>
+<li>os.version // OS版本</li>
+<li>os.name // OS名称</li>
+<li>os.arch // OS架构</li>
+<li>user.home // Home属性</li>
+<li>user.name // Name属性</li>
+<li>user.dir // Dir属性</li>
+<li>user.timezone // 时区</li>
+<li>path.separator // 路径分隔符</li>
+<li>line.separator //  行分隔符</li>
+<li>file.separator // 文件分隔符</li>
+<li>java.vendor.url //Java vendor URL 属性</li>
+<li>java.class.path // Java Class 路径</li>
+<li>java.class.version // Java Class 版本</li>
+<li>java.vendor // Java 版本</li>
+<li>java.home // Java Home 属性</li>
+</ul>
+<h4 id="3-Android-系统信息实例"><a href="#3-Android-系统信息实例" class="headerlink" title="3).Android 系统信息实例"></a>3).Android 系统信息实例</h4><p>在system/build.prop文件中，包含很多RO属性值，在/proc目录下，可以看到更多的系统信息</p>
+<h3 id="2-Andoird-Apk-应用信息获取之PackageManager"><a href="#2-Andoird-Apk-应用信息获取之PackageManager" class="headerlink" title="2.Andoird Apk 应用信息获取之PackageManager"></a>2.Andoird Apk 应用信息获取之PackageManager</h3><h4 id="1-PackageManager"><a href="#1-PackageManager" class="headerlink" title="1).PackageManager"></a>1).PackageManager</h4><img src="img/2.png" style="zoom:40%;" />
+
+<p>在上图中，最里面的框代表整个Activity信息，系统提供了ActivityInfo类进行封装</p>
+<p>最外面的框代表这个整个Mainifest文件中节点的信息，系统提供了PackageInfo来进行封装</p>
+<p>Android系统提供了PackaaageManager来负责管理所有已安装的App</p>
+<ul>
+<li><p>ActivityInfo</p>
+<p>封装了在Mainifest文件中&lt;activity&gt;&lt;\activity&gt;和&lt;receiver&gt;&lt;\receiver&gt;之间的所有信息，包括name、icon、label、launchmod等</p>
+</li>
+<li><p>ServiceInfo</p>
+<p>ServiceInfo与ActivityInfo类似，它封装了&lt;service&gt;&lt;\service&gt;之间的所有信息</p>
+</li>
+<li><p>ApplicationInfo</p>
+<p>封装了&lt;application&gt;&lt;\application&gt;之间的信息，而且还包含很多Flag,FLAG_SYSTEM表示为系统应用，FLAG_EXTERNAL_STORAGE表示为安装在SDCard上的应用，通过这些Flag，可以很方便的判断应用的类型</p>
+</li>
+<li><p>PackageInfo</p>
+<p>封装Mainifest文件的相关节点信息，还包含了所有的Activity、Service等信息</p>
+</li>
+<li><p>ResolveInfo</p>
+<p>封装的是包含&lt;intent&gt;信息的上一级信息，可以返回ActivityInfo、ServiceInfo等包含&lt;intent&gt;的信息，经常用来帮助我们找的那些包含特定Intent条件的信息</p>
+</li>
+</ul>
+<p>PackageManager可以通过调用各种方法，返回不同类型的Bean对象，经常使用以下方法</p>
+<ul>
+<li>getPackageManager：通过调用这个方法返回一个PackageManager对象</li>
+<li>getApplicationInfo：以getApplicationInfo的形式返回指定包名的ApplicationInfo</li>
+<li>getApplicationIcon：返回指定包名的Icon</li>
+<li>getInstalledApplications：以ApplicationInfo的形式返回安装的应用</li>
+<li>getInstalledPackages：以PackageInfo的形式返回安装的应用</li>
+<li>queryIntentActivities：返回指定intent的ResolveInfo对象、Activity集合</li>
+<li>queryIntentServices：返回指定intent的ResolveInfo对象、Service集合</li>
+<li>resolveActivity：返回指定intent的Activity</li>
+<li>resolveService：返回指定intent的Service</li>
+</ul>
+<h3 id="3-Android-Apk应用信息获取之ActivityManaager"><a href="#3-Android-Apk应用信息获取之ActivityManaager" class="headerlink" title="3.Android Apk应用信息获取之ActivityManaager"></a>3.Android Apk应用信息获取之ActivityManaager</h3><p>ActivityManager封装了不少Bean对象</p>
+<ul>
+<li><p>ActivityManager.MemoryInfo</p>
+<p>MemoryInfo有几个非常重要的字段：availMem–系统可用内存，totalMem–总内存，thresold–低内存的阈值，即区分是否低内存的临界值，lowMemory–是否处于低内存</p>
+</li>
+<li><p>Debug.MemoryInfo</p>
+<p>用于统计进程下的内存信息</p>
+</li>
+<li><p>RunningAppProcessInfo</p>
+<p>运行进程的信息，存储的字段是进程相关的信息，processName–进程名，pid–进程pid，uid–进程uid，pkgList–该进程下的所有包</p>
+</li>
+<li><p>RunningServiceInfo</p>
+<p>用于封装运行的服务信息，包含了一些服务进程的信息，同时还有一些其他信息，activiteSince–第一次被激活的时间，方式，foreground–服务是否在后台执行</p>
+</li>
+</ul>
+<h3 id="4-解析Packages-xml获取系统信息"><a href="#4-解析Packages-xml获取系统信息" class="headerlink" title="4.解析Packages.xml获取系统信息"></a>4.解析Packages.xml获取系统信息</h3><p>在系统初始化的时候，packageManager的底层实现类PackageManagerService会去扫描系统中的一些特定的目录，并解析其中的Apk文件。同时，Android把获得的应用信息保存到XML文件中，当系统中的apk安装，删除，升级时，也会被更新，位于/data/system/目录下的–packages.xml文件</p>
+<ul>
+<li><p>&lt;permissions&gt;标签</p>
+<p>定义了目前系统中的所有权限，并分为两类：系统定义的（package属性为Android)和Apk定义的（package属性为Apk的包名）</p>
+</li>
+<li><p>&lt;package&gt;标签</p>
+<p>package标签代表了一个Apk的属性，各节点的含义如下所示</p>
+<p>name：Apk的包名</p>
+<p>codePath：Apk的安装路径，主要有/system/app（存放系统Apk或者是厂商定制Apk）和/data/app/（存放用户安装的第三方Apk）两种</p>
+<p>userId：用户ID</p>
+<p>version：版本号</p>
+</li>
+<li><p>&lt;perms&gt;标签</p>
+<p>对应Apk的AndroidMainifest文件中的&lt;uses-permission&gt;标签，记录Apk的权限信息</p>
+</li>
+</ul>
+<h3 id="5-Android安全机制"><a href="#5-Android安全机制" class="headerlink" title="5.Android安全机制"></a>5.Android安全机制</h3><h4 id="1-Android安全机制简介"><a href="#1-Android安全机制简介" class="headerlink" title="1).Android安全机制简介"></a>1).Android安全机制简介</h4><ul>
+<li>代码安全机制——代码混淆proguard</li>
+<li>应用接入权限控制——AndroidMainifest文件权限声明、权限检查机制</li>
+<li>应用签名机制——数字证书</li>
+<li>Linux内核层安全机制——Uid、访问权限控制</li>
+<li>Android虚拟机沙箱机制——沙箱隔离</li>
+</ul>
+<h4 id="2-Android系统安全隐患"><a href="#2-Android系统安全隐患" class="headerlink" title="2).Android系统安全隐患"></a>2).Android系统安全隐患</h4><ul>
+<li>代码漏洞</li>
+<li>Root风险</li>
+<li>安全机制不健全</li>
+<li>用户安全意识</li>
+<li>Android开发原则与安全</li>
+</ul>
+<h4 id="3-Android-Apk-反编译"><a href="#3-Android-Apk-反编译" class="headerlink" title="3).Android Apk 反编译"></a>3).Android Apk 反编译</h4><ul>
+<li><p>apktool</p>
+<p>进入到apktool目录下，通过指令<strong>apktool    d    XX.apk</strong>，可以获得解压的文件夹，可以查看相关的反编译的代码，也可以再使用<strong>apktool    b    XX</strong>可以对文件夹重新打包生成apk</p>
+</li>
+<li><p>Dex2jar、jd-gui</p>
+<p>在apktool反编译后有一个dex文件，复制到dex2jar根目录下，然后执行如下命令：<strong>d2j-dex2jar.bat    classes.dex</strong>，会在当前目录下生成一个jar文件，然后打开jd-gui，并选择file-open file，选择刚刚生成的classes-dex2jar.jar文件，就可以查看相关的源代码了</p>
+</li>
+</ul>
+<h2 id="十、Android性能优化"><a href="#十、Android性能优化" class="headerlink" title="十、Android性能优化"></a>十、Android性能优化</h2><h3 id="1-布局优化"><a href="#1-布局优化" class="headerlink" title="1.布局优化"></a>1.布局优化</h3><h4 id="1-Android-UI渲染机制"><a href="#1-Android-UI渲染机制" class="headerlink" title="1).Android UI渲染机制"></a>1).Android UI渲染机制</h4><p>系统如果每次渲染的时间都在16ms之内，也就是60帧（1000/16）画面，这样UI界面会非常流畅</p>
+<h4 id="2-避免Overdraw"><a href="#2-避免Overdraw" class="headerlink" title="2).避免Overdraw"></a>2).避免Overdraw</h4><p>可以通过开启开发者选项中的检测工具查看，尽量增大蓝色的区域，减少红色区域</p>
+<h4 id="3-优化布局层级"><a href="#3-优化布局层级" class="headerlink" title="3).优化布局层级"></a>3).优化布局层级</h4><p>Android中，系统对View进行测量、布局和绘制时，都是通过对View树的遍历来进行操作的，如果一个View树的高度太高，就会严重影响测量、布局和绘制的速度，因此优化布局的方法就是降低View树的高度</p>
+<h4 id="4-避免嵌套过多无用布局"><a href="#4-避免嵌套过多无用布局" class="headerlink" title="4).避免嵌套过多无用布局"></a>4).避免嵌套过多无用布局</h4><ul>
+<li><p>使用&lt;include&gt;标签重用Layout</p>
+</li>
+<li><p>使用&lt;ViewStub&gt;实现View的延迟加载</p>
+<p>布局中的ViewStub默认不显示，通过findViewById找到后，然后调用setVisibility(View.VISIBLE)来显示，也可以调用ViewStub的inflate()来显示，两种显示效果一样，不同的是inflate()方法可以返回引用的布局，一旦ViewStub被设置为可见或者被inflate了，那么ViewStub就不存在了(调用两次inflate()方法将会报错)，取而代之的是被inflate的布局，并将这个布局的ID重新设置为&lt;ViewStub&gt;中通过android:inflatedId属性指定的ID</p>
+</li>
+</ul>
+<h3 id="2-内存优化"><a href="#2-内存优化" class="headerlink" title="2.内存优化"></a>2.内存优化</h3><h4 id="1-什么是内存"><a href="#1-什么是内存" class="headerlink" title="1).什么是内存"></a>1).什么是内存</h4><p>内存是指手机的RAM，包含以下几个部分</p>
+<ul>
+<li><p>寄存器（Registers）</p>
+<p>速度最快的存储场所，程序无法控制</p>
+</li>
+<li><p>栈（Stack）</p>
+<p>存放基本类型的数据和对象引用，但对象本身不存在栈中，存放在堆中</p>
+</li>
+<li><p>堆（Heap）</p>
+<p>堆内存用来存放由new创建的对象和数组，在堆中分配的内存，由Java虚拟机的自动垃圾回收器(GC)来管理</p>
+</li>
+<li><p>静态存储区域(Static Field)</p>
+<p>静态存储区域就是指在固定的位置存放应用程序运行时一直存在的数据，Java在内存中专门划分了一个静态存储区域来管理一些特殊的数据变量如静态的数据变量</p>
+</li>
+<li><p>常量池</p>
+<p>JVM虚拟机必须为每个被装载的类型维护一个常量池，常量池就是该类型所用到常量的一个有序集合，包括直接常量（基本类型，String）和对其他类型、字段和方法的符号引用。</p>
+</li>
+</ul>
+<h4 id="2-获取Android系统内存信息"><a href="#2-获取Android系统内存信息" class="headerlink" title="2).获取Android系统内存信息"></a>2).获取Android系统内存信息</h4><p>直接用AS自带的Profiler可以查看</p>
+<h4 id="3-内存回收"><a href="#3-内存回收" class="headerlink" title="3).内存回收"></a>3).内存回收</h4><p>Java创建了垃圾收集器线程来自动进行资源的管理，方便了开发人员 的工作，但是容易造成内存泄露</p>
+<h4 id="4-内存优化实例"><a href="#4-内存优化实例" class="headerlink" title="4).内存优化实例"></a>4).内存优化实例</h4><ul>
+<li>Bitmap优化<ul>
+<li>使用适当分辨率和大小的图片</li>
+<li>及时回收内存</li>
+<li>使用图片缓存</li>
+</ul>
+</li>
+<li>代码优化<ul>
+<li>对常量使用static修饰符</li>
+<li>使用静态方法，静态方法会比普通方法提高15%左右的访问速度</li>
+<li>减少不必要的成员变量，可以使用Android Lint工具检测</li>
+<li>减少不必要的对象，使用基础类型比使用对象更加节省资源，同时避免频繁创建短作用域的变量</li>
+<li>尽量不要使用枚举，少用迭代器</li>
+<li>对Cursor、Receiver、Sensor、File等对象，要非常注意对它们的创建、回收与注册、解注册</li>
+<li>避免使用IOC框架，大量使用反射会带来性能的下降</li>
+<li>使用RenderScript、OpenGL来进行非常复杂的绘图操作</li>
+<li>使用SurfaceView来替代View进行大量、频繁的绘图操作</li>
+<li>尽量使用视图缓存</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Lint工具"><a href="#3-Lint工具" class="headerlink" title="3.Lint工具"></a>3.Lint工具</h3><p>Android Studio自带的Android代码提示工具</p>
+<h3 id="4-使用Android-Studio的Profiler工具"><a href="#4-使用Android-Studio的Profiler工具" class="headerlink" title="4.使用Android Studio的Profiler工具"></a>4.使用Android Studio的Profiler工具</h3><p>在Android Studio3.6.2及以上版本可以使用自带的Profiler工具可以查看实时内存和网络请求等分析</p>
+<h3 id="5-使用TraceView工具优化App性能"><a href="#5-使用TraceView工具优化App性能" class="headerlink" title="5.使用TraceView工具优化App性能"></a>5.使用TraceView工具优化App性能</h3><h4 id="1-生产TraceView日志的两种方法"><a href="#1-生产TraceView日志的两种方法" class="headerlink" title="1).生产TraceView日志的两种方法"></a>1).生产TraceView日志的两种方法</h4><ul>
+<li><p>通过代码生成精确范围的TraceView日志</p>
+<p>通过调用Debug.startMethodTracing()方法开启监听，调用Debug.stopMethodTracing()方法结束监听,可以使用这两个方法来包围要监听的代码块，TraceView的日志将会保存到“/sdcard/dmtrace.trace”目录下，因此需要在Mainifest文件中增加WRITE_EXTRRNAL_STORAGE权限</p>
+<p>监听的内容执行完毕后，通过ADB命令将日志文件导出到本地：</p>
+<blockquote>
+<p>adb pull /sdcard/trace_log.trace/local/LOG/</p>
+</blockquote>
+</li>
+<li><p>通过Android Studio查看TraceView日志</p>
+</li>
+</ul>
+<h4 id="2-打开TraceView日志"><a href="#2-打开TraceView日志" class="headerlink" title="2).打开TraceView日志"></a>2).打开TraceView日志</h4><p>对于导出的TraceView文件，可以使用SDK中的sdk\tools\traceview.bat工具来打开，或者通过ADM工具打开</p>
+<h4 id="3-分析TraceView日志"><a href="#3-分析TraceView日志" class="headerlink" title="3).分析TraceView日志"></a>3).分析TraceView日志</h4><ul>
+<li>时间轴区域：时间在走区域显示了不同线程在不同的时间段内的执行情况，在时间轴中，每一行都代表了一个独立的线程</li>
+<li>Profile区域：<ul>
+<li>Incl CPU Time——某方法占用CPU的时间</li>
+<li>Excl CPU Time——某方法本身（不包含子方法）占用CPU的时间</li>
+<li>Incl Real Time——某方法真正执行的时间</li>
+<li>Excl Real Time——某方法本身（不包括子方法）真正执行的时间</li>
+<li>Calls+RecurCalls——调用次数+递归回调的次数</li>
+</ul>
+</li>
+</ul>
 
       
 
@@ -219,6 +862,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -269,7 +923,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/09/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/20/android/Android%E7%BE%A4%E8%8B%B1%E4%BC%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -283,18 +937,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/06/09/test/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/11/01/android/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%A7%A3%E6%9E%90/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          test
+          Android设计模式解析
         
       </div>
     </a>
   
   
-    <a href="/2020/03/09/algorithm/%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">算法和数据结构</div>
+    <a href="/2019/05/02/git/Git%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git常用知识点整理</div>
       <i class="icon-circle-right"></i>
     </a>
   
