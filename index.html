@@ -89,7 +89,7 @@
 				
 					<a class="github" target="_blank" href="https://github.com/xumaolovemiemie" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="juejin" target="_blank" href="https://juejin.im/user/577b1a0a7db2a20054df2335" title="juejin"><i class="icon-juejin"></i></a>
+					<a class="jianshu" target="_blank" href="https://juejin.im/user/577b1a0a7db2a20054df2335" title="jianshu"><i class="icon-jianshu"></i></a>
 		        
 					<a class="mail" target="_blank" href="/13761719246@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
@@ -136,7 +136,7 @@
 					
 						<a class="github" target="_blank" href="https://github.com/xumaolovemiemie" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="juejin" target="_blank" href="https://juejin.im/user/577b1a0a7db2a20054df2335" title="juejin"><i class="icon-juejin"></i></a>
+						<a class="jianshu" target="_blank" href="https://juejin.im/user/577b1a0a7db2a20054df2335" title="jianshu"><i class="icon-jianshu"></i></a>
 			        
 						<a class="mail" target="_blank" href="/13761719246@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
@@ -2408,113 +2408,42 @@
 
 
   
-    <article id="post-git/Git常用知识点整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-python/第6章 爬虫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/02/git/Git%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">Git常用知识点整理</a>
+      <a class="article-title" href="/2019/07/03/python/%E7%AC%AC6%E7%AB%A0%20%E7%88%AC%E8%99%AB/">第六章 爬虫</a>
     </h1>
   
 
         
-        <a href="/2019/05/02/git/Git%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2019-05-02T13:03:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-02</time>
+        <a href="/2019/07/03/python/%E7%AC%AC6%E7%AB%A0%20%E7%88%AC%E8%99%AB/" class="archive-article-date">
+  	<time datetime="2019-07-03T15:02:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h3 id="一、Git基础"><a href="#一、Git基础" class="headerlink" title="一、Git基础"></a>一、Git基础</h3><h4 id="1-config的三个作用域"><a href="#1-config的三个作用域" class="headerlink" title="1. config的三个作用域"></a>1. config的三个作用域</h4><h5 id="1-缺省等同于local"><a href="#1-缺省等同于local" class="headerlink" title="1. 缺省等同于local"></a>1. 缺省等同于local</h5><ul>
-<li>$ git config –local   #local只对某个仓库有效</li>
-<li>$ git config –global   #global对当前用户所有仓库有效</li>
-<li>$ git config –system   #system对系统所有登录的用户有效</li>
+        <h2 id="第6章-爬虫"><a href="#第6章-爬虫" class="headerlink" title="第6章 爬虫"></a>第6章 爬虫</h2><h3 id="1-网络库"><a href="#1-网络库" class="headerlink" title="1.网络库"></a>1.网络库</h3><ul>
+<li>urllib库：http协议常用库</li>
 </ul>
-<h5 id="2-显示config的配置，加–list"><a href="#2-显示config的配置，加–list" class="headerlink" title="2. 显示config的配置，加–list"></a>2. 显示config的配置，加–list</h5><ul>
-<li>$ git config –list –local</li>
-<li>$ git config –list –global</li>
-<li>$ git config –list –system</li>
-</ul>
-<h4 id="2-建Git仓库"><a href="#2-建Git仓库" class="headerlink" title="2. 建Git仓库"></a>2. 建Git仓库</h4><h5 id="1-把已有的项目代码纳入Git管理"><a href="#1-把已有的项目代码纳入Git管理" class="headerlink" title="1. 把已有的项目代码纳入Git管理"></a>1. 把已有的项目代码纳入Git管理</h5><ul>
-<li>$ cd 项目代码所在的文件夹</li>
-<li>git init</li>
-</ul>
-<h5 id="2-新建的项目直接用Git管理"><a href="#2-新建的项目直接用Git管理" class="headerlink" title="2. 新建的项目直接用Git管理"></a>2. 新建的项目直接用Git管理</h5><ul>
-<li>cd 某个文件夹</li>
-<li>git init your_project  # 会在当前路径下创建和项目名称相同的文件夹</li>
-<li>cd your_project</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A(工作目录) --&gt; |git add files|B(暂存区) --&gt;	|git commit|C(版本历史)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request, parse</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://httpbin.org/post'</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"Accept"</span>: <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"</span>,</span><br><span class="line">    <span class="string">"Accept-Encoding"</span>: <span class="string">"gzip, deflate, sdch"</span>,</span><br><span class="line">    <span class="string">"Accept-Language"</span>: <span class="string">"zh-CN,zh;q=0.8"</span>,</span><br><span class="line">    <span class="string">"Connection"</span>: <span class="string">"close"</span>,</span><br><span class="line">    <span class="string">"Cookie"</span>: <span class="string">"_gauges_unique_hour=1; _gauges_unique_day=1; _gauges_unique_month=1; _gauges_unique_year=1; _gauges_unique=1"</span>,</span><br><span class="line">    <span class="string">"Referer"</span>: <span class="string">"http://httpbin.org/"</span>,</span><br><span class="line">    <span class="string">"Upgrade-Insecure-Requests"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="string">"User-Agent"</span>: <span class="string">"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER"</span></span><br><span class="line">&#125;</span><br><span class="line">dict = &#123;</span><br><span class="line">    <span class="string">'name'</span>: <span class="string">'value'</span></span><br><span class="line">&#125;</span><br><span class="line">data = bytes(parse.urlencode(dict), encoding=<span class="string">'utf8'</span>)</span><br><span class="line">req = request.Request(url=url, data=data, headers=headers, method=<span class="string">'POST'</span>)</span><br><span class="line">response = request.urlopen(req)</span><br><span class="line">htmls = response.read()</span><br><span class="line">buff = BytesIO(htmls)</span><br><span class="line">f = gzip.GzipFile(fileobj=buff)</span><br><span class="line">print(f.read().decode(<span class="string">'utf-8'</span>))</span><br></pre></td></tr></table></figure>
 
-
-
-<h4 id="3-Git常用命令"><a href="#3-Git常用命令" class="headerlink" title="3. Git常用命令"></a>3. Git常用命令</h4><h5 id="1-git-commit：提交变更"><a href="#1-git-commit：提交变更" class="headerlink" title="1. git commit：提交变更"></a>1. git commit：提交变更</h5><ul>
-<li>git commit -m ‘log’：提交变更，日志为log</li>
-<li>git commit -am ‘log’：直接将变动提交到版本库中，不经过暂存区(不建议使用)</li>
-<li>git commit –amend：修改最近一次提交的log日志</li>
-</ul>
-<h5 id="2-git-status：显示工作目录和暂存区的状态"><a href="#2-git-status：显示工作目录和暂存区的状态" class="headerlink" title="2. git status：显示工作目录和暂存区的状态"></a>2. git status：显示工作目录和暂存区的状态</h5><h5 id="3-git-add：添加修改到暂存区"><a href="#3-git-add：添加修改到暂存区" class="headerlink" title="3. git add：添加修改到暂存区"></a>3. git add：添加修改到暂存区</h5><ul>
-<li>git add .：提交所有的变化（Git1.x版本中不包含被删除的文件）</li>
-<li>git add -u：提交被修改和被删除的文件到暂存区，不包括新文件</li>
-<li>git add -A：提交所有的变化</li>
-</ul>
-<h5 id="4-git-log：查看当前分支的git提交日志"><a href="#4-git-log：查看当前分支的git提交日志" class="headerlink" title="4. git log：查看当前分支的git提交日志"></a>4. git log：查看当前分支的git提交日志</h5><ul>
-<li>git log –oneline：查看当前分支的git提交日志(简洁版本)</li>
-<li>git log -n3：查看最近的3次日志,查看几次就输入几</li>
-<li>git log –all：查看所有分支的提交日志</li>
-<li>git log –graph：图形化查看日志</li>
-</ul>
-<h5 id="5-git-branch：查看本地分支"><a href="#5-git-branch：查看本地分支" class="headerlink" title="5. git branch：查看本地分支"></a>5. git branch：查看本地分支</h5><ul>
-<li>git branch -r：查看远程分支；</li>
-<li>git branch -a：查看本地和远程分支；</li>
-<li>git branch -v：查看本地分支信息；</li>
-<li>git branch -vv：查看更多本地分支信息；</li>
-<li>git branch -av：查看所有分支信息；</li>
-<li>git branch -m oldbranch newbranch：重命名分支；</li>
-<li>git branch -M oldbranch newbranch：强制重命名分支（如果newbranch分支已存在，那么采用-M强制重命名为newbranch）</li>
-</ul>
-<h5 id="6-git-checkout：检出分支"><a href="#6-git-checkout：检出分支" class="headerlink" title="6. git checkout：检出分支"></a>6. git checkout：检出分支</h5><ul>
-<li>git checkout -b branchName：新建一个branchName分支，并切换到该分支，等同于两条命令的简写<ul>
-<li>git branch branchName</li>
-<li>git checkout branchName</li>
-</ul>
+<ul>
+<li><p>requests库：http协议常用库</p>
 </li>
-<li>git checkout branchName：切换到branchName分支</li>
+<li><p>BeautifulSoup库：xml格式处理库</p>
+</li>
 </ul>
-<h5 id="7-git-branch-d：删除分支"><a href="#7-git-branch-d：删除分支" class="headerlink" title="7. git branch -d：删除分支"></a>7. git branch -d：删除分支</h5><ul>
-<li>git branch -d branchName：删除本地分支；</li>
-<li>git branch -d -r branchName：删除远程分支；</li>
-<li>git branch -D branchName：强制删除分支；</li>
-</ul>
-<h5 id="8-git-diff-：比较两个commit的差异"><a href="#8-git-diff-：比较两个commit的差异" class="headerlink" title="8. git diff ：比较两个commit的差异"></a>8. git diff ：比较两个commit的差异</h5><ul>
-<li>git diff 哈希值1 哈希值2：哈希值1处提交与哈希值2处提交的区别</li>
-<li>git diff HEAD HEAD^：HEAD和HEAD父节点的区别</li>
-</ul>
-<h5 id="9-git-rebase"><a href="#9-git-rebase" class="headerlink" title="9. git rebase:"></a>9. git rebase:</h5><ul>
-<li>git rebase -i commitName：</li>
-</ul>
-<h4 id="4-目录-git下文件作用"><a href="#4-目录-git下文件作用" class="headerlink" title="4. 目录.git下文件作用"></a>4. 目录.git下文件作用</h4><h5 id="1-HEAD"><a href="#1-HEAD" class="headerlink" title="1. HEAD"></a>1. HEAD</h5><p>指向当前的工作路径，例如：ref: refs/heads/master表示处于master分支</p>
-<p>通过<strong>git checkout test</strong>命令可以切换到test分支，切换后，HEAD内容会变换为ref: refs/heads/test</p>
-<h5 id="2-config"><a href="#2-config" class="headerlink" title="2. config"></a>2. config</h5><p>用于存储本地仓库相关的配置信息，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion &#x3D; 0</span><br><span class="line">	filemode &#x3D; true</span><br><span class="line">	bare &#x3D; false</span><br><span class="line">	logallrefupdates &#x3D; true</span><br><span class="line">	ignorecase &#x3D; true</span><br><span class="line">	precomposeunicode &#x3D; true</span><br><span class="line">[user]</span><br><span class="line">	name &#x3D; sunjie</span><br><span class="line">	email &#x3D; 13761719246@163.com</span><br></pre></td></tr></table></figure>
+<h3 id="2-requests库"><a href="#2-requests库" class="headerlink" title="2.requests库"></a>2.requests库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get请求</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">'http://httpbin.org/get'</span></span><br><span class="line">data = &#123;<span class="string">'key'</span>: <span class="string">'value'</span>, <span class="string">'abc'</span>: <span class="string">'xyz'</span>&#125;</span><br><span class="line"><span class="comment"># .get是使用get方法请求url，字典类型的data不用进行额外处理</span></span><br><span class="line">response = requests.get(url, data)</span><br><span class="line">print(response.text)	<span class="comment"># 打印的为格式化后的数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># post请求</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">'http://httpbin.org/post'</span></span><br><span class="line">data = &#123;<span class="string">'key'</span>: <span class="string">'value'</span>, <span class="string">'abc'</span>: <span class="string">'xyz'</span>&#125;</span><br><span class="line"><span class="comment"># .post表示为post方法</span></span><br><span class="line">response = requests.post(url, data)</span><br><span class="line"><span class="comment"># 返回类型为json格式</span></span><br><span class="line">print(response.json()) <span class="comment"># 打印的数据只有一整行</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="3-refs目录"><a href="#3-refs目录" class="headerlink" title="3. refs目录"></a>3. refs目录</h5><ul>
-<li>refs/heads：存放分支信息</li>
-<li>refs/tags：存放tag信息</li>
-</ul>
-<p>里面存储的是各个分支和tag的SHA-1 值</p>
-<p><strong>git cat-file -t 哈希值</strong>：查看版本库对象的类型，git中类型一般就commit，tree，blob这三种，blob就是文件</p>
-<p><strong>git cat-file -p 哈希值</strong>：查看版本库对象的内容</p>
-<p><strong>git cat-file -s 哈希值</strong>：查看版本库对象的大小</p>
-<h5 id="4-objects目录"><a href="#4-objects目录" class="headerlink" title="4. objects目录"></a>4. objects目录</h5><p>文件夹中的子文件夹都是以哈希值的前两位字符命名 每个object由40位字符组成，前两位字符用来当文件夹名，后38位做文件名。存储的是分支文件的tree和blob等</p>
-<h5 id="5-和-的区别"><a href="#5-和-的区别" class="headerlink" title="5. ^和~的区别"></a>5. ^和~的区别</h5><ul>
-<li>^n：某个commit的第n个父commit</li>
-<li>~n：沿着commit树主干向上搜索n层，并获得该层的第一个commit</li>
-</ul>
+<h3 id="3-Beautiful-Soup的安装和使用"><a href="#3-Beautiful-Soup的安装和使用" class="headerlink" title="3.Beautiful Soup的安装和使用"></a>3.Beautiful Soup的安装和使用</h3><blockquote>
+<p>安装命令：<strong>pip3 install bs4</strong></p>
+</blockquote>
 
       
 
@@ -2528,7 +2457,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -2538,7 +2467,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/02/git/Git%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/03/python/%E7%AC%AC6%E7%AB%A0%20%E7%88%AC%E8%99%AB/">展开全文 >></a>
         </p>
       
 
@@ -2568,6 +2497,727 @@
 
 
   
+    <article id="post-python/第5章 机器学习库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/13/python/%E7%AC%AC5%E7%AB%A0%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BA%93/">第五章 机器学习库</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/13/python/%E7%AC%AC5%E7%AB%A0%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BA%93/" class="archive-article-date">
+  	<time datetime="2019-06-13T11:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第5章-机器学习库"><a href="#第5章-机器学习库" class="headerlink" title="第5章 机器学习库"></a>第5章 机器学习库</h2><blockquote>
+<p>机器学习算法的通用步骤：</p>
+<p>数据采集，数据预处理，数据清洗，建模，测试</p>
+</blockquote>
+<p>[TOC]</p>
+<h3 id="1-Numpy库"><a href="#1-Numpy库" class="headerlink" title="1.Numpy库"></a>1.Numpy库</h3><blockquote>
+<p>用于高性能科学计算和数据分析，是常用的高级数据分析库的基础包  </p>
+</blockquote>
+<h4 id="A-numpy的安装"><a href="#A-numpy的安装" class="headerlink" title="A.numpy的安装"></a>A.numpy的安装</h4><ol>
+<li><p>输入命令：<strong><em>pip3 install numpy</em></strong></p>
+</li>
+<li><p>在终端中输入：<strong><em>which python3</em></strong>可以获取到系统python的位置</p>
+</li>
+<li><p>在PyCharm中设置<strong><em>Preferences-&gt;Project-&gt;Project Interpreter-&gt;设置-&gt;Add</em></strong>,添加python地址</p>
+</li>
+<li><p>在PyCharm中设置<strong><em>Run-&gt;Edit Configurations</em></strong>,解释器选择刚刚添加的解释器</p>
+</li>
+</ol>
+<h4 id="B-numpy的使用"><a href="#B-numpy的使用" class="headerlink" title="B.numpy的使用"></a>B.numpy的使用</h4><ul>
+<li>numpy.array(?)传入一个列表，返回一个被numpy封装过的列表，计算的效率远远高于python自带的列表</li>
+<li>numpy.array(?).dtype返回列表中的数据类型</li>
+<li>numpy.array(?) + numpy.array(?)可以实现列表的累加</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr1 = np.array([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">print(arr1)</span><br><span class="line">print(arr1.dtype)</span><br><span class="line">arr2 = np.array([<span class="number">1.2</span>, <span class="number">2.3</span>, <span class="number">3.4</span>])</span><br><span class="line">print(arr2.dtype)</span><br><span class="line">print(arr1 + arr2)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">[2 3 4]</span></span><br><span class="line"><span class="string">int64</span></span><br><span class="line"><span class="string">float64</span></span><br><span class="line"><span class="string">[3.2 5.3 7.4]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="C-numpy数组和标量的计算"><a href="#C-numpy数组和标量的计算" class="headerlink" title="C.numpy数组和标量的计算"></a>C.numpy数组和标量的计算</h4><ul>
+<li>numpy数组可以直接和标量进行计算</li>
+<li>numpy.zeros((3,4))定义一个3行4列全部为0的矩阵</li>
+<li>numpy.ones((4,5))定义一个4行5列的全部为1的矩阵</li>
+<li>numpy.empty((2,3,2))定义一个3维矩阵，矩阵全部设置为空值对程序计算是不安全的，会随机填入空值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr2 = np.array([<span class="number">1.2</span>, <span class="number">2.3</span>, <span class="number">3.4</span>])</span><br><span class="line">print(arr2 * <span class="number">10</span>)</span><br><span class="line">print(np.zeros((<span class="number">3</span>, <span class="number">4</span>)))</span><br><span class="line">print(np.ones((<span class="number">4</span>, <span class="number">5</span>)))</span><br><span class="line">print(np.empty((<span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>)))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">[12. 23. 34.]</span></span><br><span class="line"><span class="string">[[0. 0. 0. 0.]</span></span><br><span class="line"><span class="string"> [0. 0. 0. 0.]</span></span><br><span class="line"><span class="string"> [0. 0. 0. 0.]]</span></span><br><span class="line"><span class="string">[[1. 1. 1. 1. 1.]</span></span><br><span class="line"><span class="string"> [1. 1. 1. 1. 1.]</span></span><br><span class="line"><span class="string"> [1. 1. 1. 1. 1.]</span></span><br><span class="line"><span class="string"> [1. 1. 1. 1. 1.]]</span></span><br><span class="line"><span class="string">[[[0. 0.]</span></span><br><span class="line"><span class="string">  [0. 0.]</span></span><br><span class="line"><span class="string">  [0. 0.]]</span></span><br><span class="line"><span class="string"> [[0. 0.]</span></span><br><span class="line"><span class="string">  [0. 0.]</span></span><br><span class="line"><span class="string">  [0. 0.]]]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="D-numpy数组的索引和切片"><a href="#D-numpy数组的索引和切片" class="headerlink" title="D.numpy数组的索引和切片"></a>D.numpy数组的索引和切片</h4><ul>
+<li>numpy.arange(start,stop,step)，和python的range()功能相似，产生一个数组，下标索引从0开始计算</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">arr = np.arange(<span class="number">10</span>, <span class="number">30</span>, <span class="number">2</span>)</span><br><span class="line">arr[<span class="number">5</span>:<span class="number">8</span>] = <span class="number">11</span></span><br><span class="line">print(arr)</span><br><span class="line">arr_slice = arr[<span class="number">5</span>:<span class="number">8</span>].copy()</span><br><span class="line">print(arr_slice)</span><br><span class="line">arr_slice[:] = <span class="number">13</span></span><br><span class="line">print(arr_slice)</span><br><span class="line">print(arr)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">[10 12 14 16 18 11 11 11 26 28]</span></span><br><span class="line"><span class="string">[11 11 11]</span></span><br><span class="line"><span class="string">[13 13 13]</span></span><br><span class="line"><span class="string">[10 12 14 16 18 11 11 11 26 28]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Pandas库"><a href="#2-Pandas库" class="headerlink" title="2.Pandas库"></a>2.Pandas库</h3><blockquote>
+<p>用于进行数据的预处理和数据的清洗</p>
+</blockquote>
+<h4 id="A-pandas的安装"><a href="#A-pandas的安装" class="headerlink" title="A.pandas的安装"></a>A.pandas的安装</h4><p>在终端中输入:<strong><em>pip3 install pandas</em></strong></p>
+<h4 id="B-Series"><a href="#B-Series" class="headerlink" title="B.Series"></a>B.Series</h4><ul>
+<li>Series就是对numpy的array进行了封装，自动添加了索引</li>
+<li>单独取出索引可以用Series.index</li>
+<li>单独取出值可以用Series.value</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series</span><br><span class="line"></span><br><span class="line">obj = Series([<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">-7</span>])</span><br><span class="line">print(obj)</span><br><span class="line">print(obj.index)</span><br><span class="line">print(obj.values)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">0    4</span></span><br><span class="line"><span class="string">1    5</span></span><br><span class="line"><span class="string">2    6</span></span><br><span class="line"><span class="string">3   -7</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">RangeIndex(start=0, stop=4, step=1)</span></span><br><span class="line"><span class="string">[ 4  5  6 -7]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可以自定义索引值，而且pandas</li>
+<li>可以通过索引进行赋值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series</span><br><span class="line"></span><br><span class="line">obj2 = Series([<span class="number">4</span>, <span class="number">7</span>, <span class="number">-5</span>, <span class="number">3</span>], index=[<span class="string">'d'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>])</span><br><span class="line">print(obj2)</span><br><span class="line">obj2[<span class="string">'d'</span>] = <span class="number">6</span></span><br><span class="line">print(obj2)</span><br><span class="line">print(<span class="string">'a'</span> <span class="keyword">in</span> obj2)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">d    4</span></span><br><span class="line"><span class="string">b    7</span></span><br><span class="line"><span class="string">c   -5</span></span><br><span class="line"><span class="string">d    3</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">d    6</span></span><br><span class="line"><span class="string">b    7</span></span><br><span class="line"><span class="string">c   -5</span></span><br><span class="line"><span class="string">d    6</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">False</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>索引可以进行相应的修改</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series</span><br><span class="line"></span><br><span class="line">sdata = &#123;<span class="string">'beijing'</span>: <span class="number">35000</span>, <span class="string">'shanghai'</span>: <span class="number">71000</span>, <span class="string">'guangzhou'</span>: <span class="number">16000</span>,<span class="string">'shenzhen'</span>: <span class="number">5000</span>&#125;</span><br><span class="line">obj3 = Series(sdata)</span><br><span class="line">print(obj3)</span><br><span class="line">obj3.index = [<span class="string">'bj'</span>, <span class="string">'sh'</span>, <span class="string">'gz'</span>, <span class="string">'sz'</span>]</span><br><span class="line">print(obj3)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">beijing      35000</span></span><br><span class="line"><span class="string">shanghai     71000</span></span><br><span class="line"><span class="string">guangzhou    16000</span></span><br><span class="line"><span class="string">shenzhen      5000</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">bj    35000</span></span><br><span class="line"><span class="string">sh    71000</span></span><br><span class="line"><span class="string">gz    16000</span></span><br><span class="line"><span class="string">sz     5000</span></span><br><span class="line"><span class="string">dtype: int64</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Series.reindex(index,fill_value,method=”ffill,bfill”)index表示索引，fill_value表示用于填充缺失值的数，ffill用前面的值填充，bfill表示用后面的值进行填充</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series</span><br><span class="line"></span><br><span class="line">obj4 = Series([<span class="number">4.5</span>, <span class="number">7.2</span>, <span class="number">-5.3</span>, <span class="number">3.5</span>], index=[<span class="string">'b'</span>, <span class="string">'d'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>])</span><br><span class="line">obj5 = obj4.reindex([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>], fill_value=<span class="number">0</span>)</span><br><span class="line">print(obj5)</span><br><span class="line">obj6 = Series([<span class="string">'blue'</span>, <span class="string">'purple'</span>, <span class="string">'yellow'</span>], index=[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>])</span><br><span class="line">print(obj6.reindex(range(<span class="number">6</span>), method=<span class="string">'bfill'</span>))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">a    3.5</span></span><br><span class="line"><span class="string">b    4.5</span></span><br><span class="line"><span class="string">c   -5.3</span></span><br><span class="line"><span class="string">d    7.2</span></span><br><span class="line"><span class="string">e    0.0</span></span><br><span class="line"><span class="string">dtype: float64</span></span><br><span class="line"><span class="string">0      blue</span></span><br><span class="line"><span class="string">1    purple</span></span><br><span class="line"><span class="string">2    purple</span></span><br><span class="line"><span class="string">3    yellow</span></span><br><span class="line"><span class="string">4    yellow</span></span><br><span class="line"><span class="string">5       NaN</span></span><br><span class="line"><span class="string">dtype: object</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Series.dropna()可以删除缺失值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> nan <span class="keyword">as</span> NA</span><br><span class="line"></span><br><span class="line">data = Series([<span class="number">1</span>, NA, <span class="number">2</span>])</span><br><span class="line">print(data.dropna())</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">0    1.0</span></span><br><span class="line"><span class="string">2    2.0</span></span><br><span class="line"><span class="string">dtype: float64</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="C-DataFrame"><a href="#C-DataFrame" class="headerlink" title="C.DataFrame"></a>C.DataFrame</h4><blockquote>
+<p>多维数组的处理</p>
+</blockquote>
+<ul>
+<li>DataFrame()添加参数columns=可以对列进行位置排序(列的位置替换，非列里面进行排序)</li>
+<li>DataFrame[‘key’]或者DataFrame.key可以根据key值获取到对应列的数据</li>
+<li>DataFrame[‘newkey’]=?可以添加新的列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame</span><br><span class="line"></span><br><span class="line">data = &#123;<span class="string">'city'</span>: [<span class="string">'shanghai'</span>, <span class="string">'shanghai'</span>, <span class="string">'beijing'</span>, <span class="string">'beijing'</span>],</span><br><span class="line">        <span class="string">'year'</span>: [<span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2017</span>, <span class="number">2018</span>],</span><br><span class="line">        <span class="string">'pop'</span>: [<span class="number">1.5</span>, <span class="number">1.7</span>, <span class="number">2.4</span>, <span class="number">2.9</span>]&#125;</span><br><span class="line">frame = DataFrame(data)</span><br><span class="line">frame2 = DataFrame(data, columns=[<span class="string">'year'</span>, <span class="string">'pop'</span>, <span class="string">'city'</span>])</span><br><span class="line">print(frame)</span><br><span class="line">print(frame2)</span><br><span class="line">print(frame2[<span class="string">'city'</span>])</span><br><span class="line">print(frame2.year)</span><br><span class="line">frame2[<span class="string">'new'</span>] = <span class="number">100</span></span><br><span class="line">print(frame2)</span><br><span class="line">frame2[<span class="string">'cap'</span>] = frame2.city == <span class="string">'beijing'</span></span><br><span class="line">print(frame2)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">       city  year  pop</span></span><br><span class="line"><span class="string">0  shanghai  2016  1.5</span></span><br><span class="line"><span class="string">1  shanghai  2017  1.7</span></span><br><span class="line"><span class="string">2   beijing  2017  2.4</span></span><br><span class="line"><span class="string">3   beijing  2018  2.9</span></span><br><span class="line"><span class="string">   year  pop      city</span></span><br><span class="line"><span class="string">0  2016  1.5  shanghai</span></span><br><span class="line"><span class="string">1  2017  1.7  shanghai</span></span><br><span class="line"><span class="string">2  2017  2.4   beijing</span></span><br><span class="line"><span class="string">3  2018  2.9   beijing</span></span><br><span class="line"><span class="string">0    shanghai</span></span><br><span class="line"><span class="string">1    shanghai</span></span><br><span class="line"><span class="string">2     beijing</span></span><br><span class="line"><span class="string">3     beijing</span></span><br><span class="line"><span class="string">Name: city, dtype: object</span></span><br><span class="line"><span class="string">0    2016</span></span><br><span class="line"><span class="string">1    2017</span></span><br><span class="line"><span class="string">2    2017</span></span><br><span class="line"><span class="string">3    2018</span></span><br><span class="line"><span class="string">Name: year, dtype: int64</span></span><br><span class="line"><span class="string">   year  pop      city  new</span></span><br><span class="line"><span class="string">0  2016  1.5  shanghai  100</span></span><br><span class="line"><span class="string">1  2017  1.7  shanghai  100</span></span><br><span class="line"><span class="string">2  2017  2.4   beijing  100</span></span><br><span class="line"><span class="string">3  2018  2.9   beijing  100</span></span><br><span class="line"><span class="string">   year  pop      city  new    cap</span></span><br><span class="line"><span class="string">0  2016  1.5  shanghai  100  False</span></span><br><span class="line"><span class="string">1  2017  1.7  shanghai  100  False</span></span><br><span class="line"><span class="string">2  2017  2.4   beijing  100   True</span></span><br><span class="line"><span class="string">3  2018  2.9   beijing  100   True</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>DataFrame.T可以将数据的行和列进行反转</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame</span><br><span class="line"></span><br><span class="line">pop = &#123;<span class="string">'beijing'</span>: &#123;<span class="number">2008</span>: <span class="number">1.5</span>, <span class="number">2009</span>: <span class="number">2.0</span>&#125;,</span><br><span class="line">       <span class="string">'shanghai'</span>: &#123;<span class="number">2008</span>: <span class="number">2.0</span>, <span class="number">2009</span>: <span class="number">3.6</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">frame3 = DataFrame(pop)</span><br><span class="line">print(frame3)</span><br><span class="line">print(frame3.T)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">      beijing  shanghai</span></span><br><span class="line"><span class="string">2008      1.5       2.0</span></span><br><span class="line"><span class="string">2009      2.0       3.6</span></span><br><span class="line"><span class="string">          2008  2009</span></span><br><span class="line"><span class="string">beijing    1.5   2.0</span></span><br><span class="line"><span class="string">shanghai   2.0   3.6</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DataFrame.dropna()可以删除多维数组的缺失值<ol>
+<li>添加参数how=’all’只删除整行都是缺失值的数据，部分缺失值的可以保留</li>
+<li>添加参数axis=1，删除一整列都是缺失值的数据</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> nan <span class="keyword">as</span> NA</span><br><span class="line"></span><br><span class="line">data2 = DataFrame([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">5</span>, <span class="number">6</span>, NA], [NA, NA, NA]])</span><br><span class="line">print(data2.dropna())</span><br><span class="line">print(data2.dropna(how=<span class="string">'all'</span>))</span><br><span class="line">data2[<span class="number">4</span>] = NA</span><br><span class="line">print(data2)</span><br><span class="line">print(data2.dropna(axis=<span class="number">1</span>, how=<span class="string">'all'</span>))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">     0    1    2</span></span><br><span class="line"><span class="string">0  1.0  2.0  3.0</span></span><br><span class="line"><span class="string">     0    1    2</span></span><br><span class="line"><span class="string">0  1.0  2.0  3.0</span></span><br><span class="line"><span class="string">1  5.0  6.0  NaN</span></span><br><span class="line"><span class="string">     0    1    2   4</span></span><br><span class="line"><span class="string">0  1.0  2.0  3.0 NaN</span></span><br><span class="line"><span class="string">1  5.0  6.0  NaN NaN</span></span><br><span class="line"><span class="string">2  NaN  NaN  NaN NaN</span></span><br><span class="line"><span class="string">     0    1    2</span></span><br><span class="line"><span class="string">0  1.0  2.0  3.0</span></span><br><span class="line"><span class="string">1  5.0  6.0  NaN</span></span><br><span class="line"><span class="string">2  NaN  NaN  NaN</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DataFrame.fillna(x)将数据中所有的缺失值都用x进行填充，如果需要直接修改的话，需要添加inplace=True,如果不添加直接填充的副本</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> DataFrame</span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> nan <span class="keyword">as</span> NA</span><br><span class="line"></span><br><span class="line">data2 = DataFrame([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">5</span>, <span class="number">6</span>, NA], [NA, NA, NA]])</span><br><span class="line">data2.fillna(<span class="number">3</span>)</span><br><span class="line">print(data2)</span><br><span class="line">data2.fillna(<span class="number">4</span>, inplace=<span class="literal">True</span>)</span><br><span class="line">print(data2)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">     0    1    2</span></span><br><span class="line"><span class="string">0  1.0  2.0  3.0</span></span><br><span class="line"><span class="string">1  5.0  6.0  NaN</span></span><br><span class="line"><span class="string">2  NaN  NaN  NaN</span></span><br><span class="line"><span class="string">     0    1    2</span></span><br><span class="line"><span class="string">0  1.0  2.0  3.0</span></span><br><span class="line"><span class="string">1  5.0  6.0  4.0</span></span><br><span class="line"><span class="string">2  4.0  4.0  4.0</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-层次化索引"><a href="#3-层次化索引" class="headerlink" title="3.层次化索引"></a>3.层次化索引</h3><ul>
+<li>Series.unstack()，可以将数据转换为DataFrame</li>
+<li>DataFrame.stack(),可以将数据转换为Series</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br><span class="line"></span><br><span class="line">data = Series(np.random.randn(<span class="number">10</span>),</span><br><span class="line">              index=[[<span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'d'</span>],</span><br><span class="line">                     [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]])</span><br><span class="line">print(data)</span><br><span class="line">print(data[<span class="string">'b'</span>:<span class="string">'c'</span>])</span><br><span class="line"></span><br><span class="line">print(data.unstack())</span><br><span class="line">print(data.unstack().stack())</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">a  1    0.959932</span></span><br><span class="line"><span class="string">   2   -0.308277</span></span><br><span class="line"><span class="string">   3   -0.677998</span></span><br><span class="line"><span class="string">b  1   -0.632334</span></span><br><span class="line"><span class="string">   2   -0.776489</span></span><br><span class="line"><span class="string">   3   -0.201669</span></span><br><span class="line"><span class="string">c  1   -0.014423</span></span><br><span class="line"><span class="string">   2    0.364285</span></span><br><span class="line"><span class="string">d  2   -0.124033</span></span><br><span class="line"><span class="string">   3    0.228125</span></span><br><span class="line"><span class="string">dtype: float64</span></span><br><span class="line"><span class="string">b  1   -0.632334</span></span><br><span class="line"><span class="string">   2   -0.776489</span></span><br><span class="line"><span class="string">   3   -0.201669</span></span><br><span class="line"><span class="string">c  1   -0.014423</span></span><br><span class="line"><span class="string">   2    0.364285</span></span><br><span class="line"><span class="string">dtype: float64</span></span><br><span class="line"><span class="string">          1         2         3</span></span><br><span class="line"><span class="string">a  0.959932 -0.308277 -0.677998</span></span><br><span class="line"><span class="string">b -0.632334 -0.776489 -0.201669</span></span><br><span class="line"><span class="string">c -0.014423  0.364285       NaN</span></span><br><span class="line"><span class="string">d       NaN -0.124033  0.228125</span></span><br><span class="line"><span class="string">a  1    0.959932</span></span><br><span class="line"><span class="string">   2   -0.308277</span></span><br><span class="line"><span class="string">   3   -0.677998</span></span><br><span class="line"><span class="string">b  1   -0.632334</span></span><br><span class="line"><span class="string">   2   -0.776489</span></span><br><span class="line"><span class="string">   3   -0.201669</span></span><br><span class="line"><span class="string">c  1   -0.014423</span></span><br><span class="line"><span class="string">   2    0.364285</span></span><br><span class="line"><span class="string">d  2   -0.124033</span></span><br><span class="line"><span class="string">   3    0.228125</span></span><br><span class="line"><span class="string">dtype: float64</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-Matplotlib的安装与绘图"><a href="#4-Matplotlib的安装与绘图" class="headerlink" title="4.Matplotlib的安装与绘图"></a>4.Matplotlib的安装与绘图</h3><blockquote>
+<p>在终端输入：<strong>pip3 install matplotlib</strong>进行安装</p>
+<p>然后再py文件中引入：<strong><em>import matplotlib.pyplot as plt</em></strong></p>
+</blockquote>
+<h5 id="1-plt-plot-绘制一条曲线"><a href="#1-plt-plot-绘制一条曲线" class="headerlink" title="1.plt.plot()绘制一条曲线"></a>1.plt.plot()绘制一条曲线</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>], [<span class="number">5</span>, <span class="number">8</span>, <span class="number">9</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_1.png" alt="曲线绘制结果" style="zoom:20%;" />
+
+<h5 id="2-Matplotlib绘制numpy和pandas里面的数据"><a href="#2-Matplotlib绘制numpy和pandas里面的数据" class="headerlink" title="2.Matplotlib绘制numpy和pandas里面的数据"></a>2.Matplotlib绘制numpy和pandas里面的数据</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = np.linspace(-np.pi, np.pi, <span class="number">100</span>)<span class="comment">#定义域为-π到π，平均取100个点</span></span><br><span class="line">plt.plot(x, np.sin(x))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_2.png" alt="np数据绘制结果" style="zoom:20%;" />
+
+<h5 id="3-绘制多条曲线"><a href="#3-绘制多条曲线" class="headerlink" title="3.绘制多条曲线"></a>3.绘制多条曲线</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">y = np.linspace(-np.pi * <span class="number">2</span>, np.pi * <span class="number">2</span>, <span class="number">100</span>)</span><br><span class="line">plt.figure(<span class="number">2</span>, dpi=<span class="number">50</span>)  <span class="comment"># 创建图表2，精度为50,dpi越大文件越大，杂志要300以上</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">    plt.plot(y, np.sin(y / i))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_3.png" alt="绘制多条曲线" style="zoom:40%;" />
+
+<h5 id="4-绘制直方图（hist）"><a href="#4-绘制直方图（hist）" class="headerlink" title="4.绘制直方图（hist）"></a>4.绘制直方图（hist）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">1</span>, dpi=<span class="number">50</span>)  <span class="comment"># 创建图表1，精度50</span></span><br><span class="line">data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line">plt.hist(data)  <span class="comment"># 只要传入数据，直方图就会统计出数据出现的次数</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="/Users/xumao/Desktop/note/python/img/Figure_4.png" alt="绘制直方图" style="zoom:40%;" />
+
+<h5 id="5-绘制散点图-scatter"><a href="#5-绘制散点图-scatter" class="headerlink" title="5.绘制散点图(scatter)"></a>5.绘制散点图(scatter)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">y = x</span><br><span class="line">plt.scatter(x, y, c=<span class="string">'r'</span>, marker=<span class="string">'o'</span>)  <span class="comment"># c='r'表示颜色为红色，marker表示形状为圆形</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_5.png" alt="绘制散点图" style="zoom:20%;" />
+
+<h3 id="4-Pandas和Matplotlib结合使用"><a href="#4-Pandas和Matplotlib结合使用" class="headerlink" title="4.Pandas和Matplotlib结合使用"></a>4.Pandas和Matplotlib结合使用</h3><blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)<span class="comment">#可以忽略运行时的warning</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h5 id="1-pandas读取csv并绘制散点图"><a href="#1-pandas读取csv并绘制散点图" class="headerlink" title="1.pandas读取csv并绘制散点图"></a>1.pandas读取csv并绘制散点图</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">iris = pd.read_csv(<span class="string">"./iris_training.csv"</span>)</span><br><span class="line"><span class="comment">#打印csv的前五行数据</span></span><br><span class="line">print(iris.head())</span><br><span class="line"><span class="comment"># 绘制散点图，120和4分别为csv中数据的列名</span></span><br><span class="line">iris.plot(kind=<span class="string">'scatter'</span>, x=<span class="string">'120'</span>, y=<span class="string">'4'</span>)</span><br><span class="line"><span class="comment"># 让pandas的plot()方法在PyCharm上显示</span></span><br><span class="line">plt.show()</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">   120    4  setosa  versicolor  virginica</span></span><br><span class="line"><span class="string">0  6.4  2.8     5.6         2.2          2</span></span><br><span class="line"><span class="string">1  5.0  2.3     3.3         1.0          1</span></span><br><span class="line"><span class="string">2  4.9  2.5     4.5         1.7          2</span></span><br><span class="line"><span class="string">3  4.9  3.1     1.5         0.1          0</span></span><br><span class="line"><span class="string">4  5.7  3.8     1.7         0.3          0</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_6.png" alt="pandas数据绘制的散点图" style="zoom:20%;" />
+
+<h5 id="2-seaborn安装和使用"><a href="#2-seaborn安装和使用" class="headerlink" title="2.seaborn安装和使用"></a>2.seaborn安装和使用</h5><blockquote>
+<p>安装方法：<strong>pip3 install seaborn</strong></p>
+<p>导入方法：<strong>import seaborn as sns</strong></p>
+</blockquote>
+<ul>
+<li>seabrorn可以直接使用的主题：darkgrid，whitegrid，dark，white，和ticks,默认为darkgrid</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">iris = pd.read_csv(<span class="string">"./iris_training.csv"</span>)</span><br><span class="line"><span class="comment"># 设置样式</span></span><br><span class="line">sns.set(style=<span class="string">'white'</span>, color_codes=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 设置绘制格式为散点图,size表示图标的大小</span></span><br><span class="line">sns.jointplot(x=<span class="string">'120'</span>, y=<span class="string">'4'</span>, data=iris, size=<span class="number">5</span>)</span><br><span class="line"><span class="comment"># distplot绘制曲线</span></span><br><span class="line">sns.distplot(iris[<span class="string">'120'</span>])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_7.png" alt="seaborn" style="zoom:25%;" />
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iris = pd.read_csv(<span class="string">"./iris_training.csv"</span>)</span><br><span class="line"><span class="comment"># 设置样式</span></span><br><span class="line">sns.set(style=<span class="string">'white'</span>, color_codes=<span class="literal">True</span>)</span><br><span class="line">sns.FacetGrid(iris, hue=<span class="string">'virginica'</span>, size=<span class="number">5</span>).map(plt.scatter, <span class="string">'setosa'</span>, <span class="string">'versicolor'</span>).add_legend()</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<img src="img/Figure_8.png" style="zoom:25%;" />
+
+<h3 id="5-Tensorflow库"><a href="#5-Tensorflow库" class="headerlink" title="5.Tensorflow库"></a>5.Tensorflow库</h3><blockquote>
+<p>安装方法：<strong>pip3 install tensorflow</strong></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/13/python/%E7%AC%AC5%E7%AB%A0%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BA%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/第4章 Python标准库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/04/python/%E7%AC%AC4%E7%AB%A0%20Python%E6%A0%87%E5%87%86%E5%BA%93/">第四章 Python标准库</a>
+    </h1>
+  
+
+        
+        <a href="/2019/06/04/python/%E7%AC%AC4%E7%AB%A0%20Python%E6%A0%87%E5%87%86%E5%BA%93/" class="archive-article-date">
+  	<time datetime="2019-06-04T14:13:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第4章-Python标准库"><a href="#第4章-Python标准库" class="headerlink" title="第4章 Python标准库"></a>第4章 Python标准库</h2><p>[TOC]</p>
+<hr>
+<h3 id="1-文字处理的-re"><a href="#1-文字处理的-re" class="headerlink" title="1. 文字处理的 re"></a>1. 文字处理的 re</h3><h4 id="A-re相关方法（正则表达式对象Pattern相关方法）"><a href="#A-re相关方法（正则表达式对象Pattern相关方法）" class="headerlink" title="A.re相关方法（正则表达式对象Pattern相关方法）"></a>A.re相关方法（正则表达式对象Pattern相关方法）</h4><ul>
+<li>字符串前面加 r 表示去掉 \ (反斜杆)的转义机制</li>
+<li>字符串前面加 u 表示以Unicode 格式 进行编码</li>
+<li>字符串前面加 b 表示后面的字符串是bytes类型</li>
+<li>comiple(),传入参数表示要匹配的字符串</li>
+<li>match()，如果字符串开始位置能够找到这个正则样式的任意个匹配，就返回一个相应的匹配对象。</li>
+<li>group()，取出匹配后的分组，分组可以通过小括号实现，传入参数int，表示第几组，如果不传参，表示取出所有的部分</li>
+<li>groups(),取出所有的组合<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">p = re.compile(<span class="string">r'(\d+)-(\d+)-(\d+)'</span>) </span><br><span class="line">print(p.match(<span class="string">'2018-05-10'</span>))</span><br><span class="line">print(p.match(<span class="string">'20180510'</span>))</span><br><span class="line">print(p.match(<span class="string">'2018-05-10'</span>).group())</span><br><span class="line">print(p.match(<span class="string">'2018-05-10'</span>).group(<span class="number">1</span>))</span><br><span class="line">print(p.match(<span class="string">'2018-05-10'</span>).groups())</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">&lt;_sre.SRE_Match object; span=(0, 10), match='2018-05-10'&gt;</span></span><br><span class="line"><span class="string">None</span></span><br><span class="line"><span class="string">2018-05-10</span></span><br><span class="line"><span class="string">2018</span></span><br><span class="line"><span class="string">('2018', '05', '10')</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure></li>
+<li>search()扫描整个字符串寻找第一个匹配的位置，如果有匹配返回一个相应的匹配对象。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">p = re.compile(<span class="string">r'(\d+)-(\d+)-(\d+)'</span>) </span><br><span class="line">print(p.match(<span class="string">'aa2018-05-10bb'</span>))</span><br><span class="line">print(p.match(<span class="string">'2018-05-10bb'</span>))</span><br><span class="line">print(re.match(<span class="string">r'(\d+)-(\d+)-(\d+)'</span>, <span class="string">'2018-05-10bb'</span>))</span><br><span class="line">print(p.search(<span class="string">'aa2018-05-10bb'</span>))</span><br><span class="line">print(re.search(<span class="string">r'(\d+)-(\d+)-(\d+)'</span>, <span class="string">'aa2018-05-10bb'</span>))</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">None</span></span><br><span class="line"><span class="string">&lt;_sre.SRE_Match object; span=(0, 10), match='2018-05-10'&gt;</span></span><br><span class="line"><span class="string">&lt;_sre.SRE_Match object; span=(0, 10), match='2018-05-10'&gt;</span></span><br><span class="line"><span class="string">&lt;_sre.SRE_Match object; span=(2, 12), match='2018-05-10'&gt;</span></span><br><span class="line"><span class="string">&lt;_sre.SRE_Match object; span=(2, 12), match='2018-05-10'&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure></li>
+<li>sub()将字符串中符合正则表达式的全部替换<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> re <span class="keyword">import</span> sub</span><br><span class="line"></span><br><span class="line">phone = <span class="string">'123-456-789 # 这是电话号码'</span></span><br><span class="line">p2 = sub(<span class="string">r'#.*$'</span>, <span class="string">''</span>, phone)</span><br><span class="line">print(p2)</span><br><span class="line">p3 = sub(<span class="string">r'\D'</span>, <span class="string">''</span>, phone)</span><br><span class="line">print(p3)</span><br><span class="line">p4 = sub(<span class="string">r'\d'</span>, <span class="string">''</span>, phone)</span><br><span class="line">print(p4)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">123-456-789 </span></span><br><span class="line"><span class="string">123456789</span></span><br><span class="line"><span class="string">-- # 这是电话号码</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure></li>
+<li>findall() 对字符串返回一个不重复的符合正则的匹配列表，字符串从左到右进行扫描，匹配按找到的顺序返回<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">p = re.compile(<span class="string">r'(\d+)-(\d+)-(\d+)'</span>)</span><br><span class="line">print(re.findall(<span class="string">r'(\d+)-(\d+)-(\d+)'</span>, <span class="string">'a2018-05-10b2018-05-10c2018-05-10d'</span>))</span><br><span class="line">print(p.findall(<span class="string">'a2018-05-10b2018-05-10c2018-05-10d'</span>))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">[('2018', '05', '10'), ('2018', '05', '10'), ('2018', '05', '10')]</span></span><br><span class="line"><span class="string">[('2018', '05', '10'), ('2018', '05', '10'), ('2018', '05', '10')]</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="B-常用元字符"><a href="#B-常用元字符" class="headerlink" title="B.常用元字符"></a>B.常用元字符</h4><ol>
+<li>‘.’在默认模式，匹配除了换行的任意字符。如果指定了标签DOTALL ，它将匹配包括换行符的任意字符  </li>
+<li>‘^’匹配字符串的开头，并且在MULTILINE 模式也匹配换行后的首个符号</li>
+<li>‘$’匹配字符串尾或者换行符的前一个字符，在MULTILINE 模式匹配换行符的前一个字符</li>
+<li>‘*’对它前面的正则式匹配0到任意次重复，尽量多的匹配字符串 </li>
+<li>‘+’对它前面的正则式匹配 1 到任意次重复</li>
+<li>‘?’对它前面的正则式匹配 0 到 1 次重复。<br>在修饰符之后添加?将使样式以非贪婪方式或者最小方式进行匹配;尽量少的字符将会被匹配 </li>
+<li>‘{m}’对其之前的正则式指定匹配 m 个重复;少于 m 的话就会导致匹配失败 </li>
+<li>‘{m,n}’对正则式进行 m 到 n 次匹配，在 m 和 n 之间取尽量多 </li>
+<li>‘[]’用于表示一个字符集合。在一个集合中:<ul>
+<li>字符可以单独列出，比如 [amk] 匹配 ‘a’，’m’，或者 ‘k’</li>
+<li>可以表示字符范围，通过用 ‘-‘ 将两个字符连起来。比如 [a-z] 将匹配任何小写 ASCII 字 符，[0-5][0-9] 将匹配从 00 到 59 的两位数字，[0-9A-Fa-f] 将匹配任何十六进制数位。 如果 - 进行了转义(比如 [a-z])或者它的位置在首位或者末尾(如 [-a] 或 [a-])，它就 只表示普通字符 ‘-‘</li>
+<li>特殊字符在集合中，失去它的特殊含义。比如 [(+<em>)] 只会匹配这几个文法字符 ‘(‘, ‘+’, ‘</em>‘, or ‘)’</li>
+<li>字符类如 \w 或者 \S (如下定义) 在集合内可以接受，它们可以匹配的字符由ASCII 或 者LOCALE 模式决定</li>
+<li>不在集合范围内的字符可以通过 取反来进行匹配。如果集合首字符是 ‘^’ ，所有 不在集合 内的字符将会被匹配，比如 [^5] 将匹配所有字符，除了 ‘5’，[^^] 将匹配所有字符，除了 ‘^’. ^ 如果不在集合首位，就没有特殊含义</li>
+<li>在集合内要匹配一个字符 ‘]’，有两种方法，要么就在它之前加上反斜杠，要么就把它放到 集合首位。比如，[()[]{}] 和 <a href=""></a>[{}] 都可以匹配括号</li>
+</ul>
+</li>
+<li>‘|’A|B，A 和 B 可以是任意正则表达式，创建一个正则表达式，匹配 A 或者 B. 任意个正则表达式可以用 ‘|’ 连接 </li>
+<li>‘\d’匹配数字，等同于[0-9]  </li>
+<li>‘\D’匹配非数字 </li>
+<li>‘\s’匹配一个字符串，只包括a-z  </li>
+<li>‘()’表匹配括号内的任意正则表达式，并标识出组合的开始和结尾</li>
+</ol>
+<hr>
+<h3 id="2-日期类型的time、datetime"><a href="#2-日期类型的time、datetime" class="headerlink" title="2. 日期类型的time、datetime"></a>2. 日期类型的time、datetime</h3><h4 id="A-time一般用于日期和时间的查看"><a href="#A-time一般用于日期和时间的查看" class="headerlink" title="A.time一般用于日期和时间的查看"></a>A.time一般用于日期和时间的查看</h4><ul>
+<li><p>epoch是时间开始的点，并且取决于平台，一般是1970年1月1日00:00:00</p>
+</li>
+<li><p>UTC 是协调世界时(以前称为格林威治标准时间，或 GMT)</p>
+</li>
+<li><p>DST 是夏令时，在一年中的一部分时间(通常)调整时区一小时</p>
+</li>
+<li><p>time()返回浮点数从epoch到当前时间的秒</p>
+</li>
+<li><p>gmtime()从epoch到当前的时间转换为UTC的struct_time</p>
+</li>
+<li><p>localtime()从epoch到当前的时间转换为UTC的struct_time</p>
+</li>
+<li><p>time.struct_time返回的时间值序列的类型为gmtime()、localtime()和strptime()。它是一个带有named tuple 接口的对象:可以通过索引和属性名访问值。存在以下值:</p>
+<table>
+<thead>
+<tr>
+<th align="center">索引</th>
+<th align="center">属性</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">tm_year</td>
+<td align="left">(例如，1993)</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">tm_mon</td>
+<td align="left">range [1, 12]</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">tm_mday</td>
+<td align="left">range [1, 31]</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">tm_hour</td>
+<td align="left">range [0, 23]</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">tm_min</td>
+<td align="left">(range [0, 59]</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">tm_sec</td>
+<td align="left">range [0, 61]</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">tm_wday</td>
+<td align="left">range [0, 6] ，周一为 0</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">tm_yday</td>
+<td align="left">range [1, 366]</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">tm_isdst</td>
+<td align="left">0, 1 或 -1</td>
+</tr>
+<tr>
+<td align="center">N/A</td>
+<td align="center">tm_zone</td>
+<td align="left">时区名称的缩写</td>
+</tr>
+<tr>
+<td align="center">N/A</td>
+<td align="center">tm_gmtoff</td>
+<td align="left">以秒为单位的 UTC 以东偏离</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>strftime(format[, t ])转换一个元组或struct_time表示的由gmtime()或localtime()返回的时间到由format参数指定的字符串。如果未提供t，则使用由localtime()返回的当前时间。format必须是一个字符串。如果t中的任何字段超出允许范围，则引发ValueError。</p>
+<table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%Y</td>
+<td align="left">十进制数表示的带世纪的年份。</td>
+</tr>
+<tr>
+<td align="center">%y</td>
+<td align="left">十进制数 [00,99] 表示的没有世纪的年份。</td>
+</tr>
+<tr>
+<td align="center">%m</td>
+<td align="left">十进制数 [01,12] 表示的月。</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="left">十进制数 [01,31] 表示的月中日。</td>
+</tr>
+<tr>
+<td align="center">%H</td>
+<td align="left">十进制数 [00,23] 表示的小时(24 小时制)。</td>
+</tr>
+<tr>
+<td align="center">%M</td>
+<td align="left">十进制数 [00,59] 表示的分钟。</td>
+</tr>
+<tr>
+<td align="center">%S</td>
+<td align="left">十进制数 [00,61] 表示的秒。</td>
+</tr>
+<tr>
+<td align="center">%w</td>
+<td align="left">十进制数 [0(星期日),6] 表示的周中日。</td>
+</tr>
+<tr>
+<td align="center">%c</td>
+<td align="left">本地化的适当日期和时间表示。</td>
+</tr>
+<tr>
+<td align="center">%W</td>
+<td align="left">十进制数 [00,53] 表示的一年中的周数(星期一作为一周的第一天)作为。在第一个星期一之前的新年中的所有日子被认为是在第 0 周。</td>
+</tr>
+<tr>
+<td align="center">%%</td>
+<td align="left">字符%</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">print(time.time())</span><br><span class="line">print(time.gmtime())</span><br><span class="line">print(time.localtime())</span><br><span class="line">print(time.strftime(<span class="string">'%Y-%m-%d %H:%M:%S'</span>))</span><br><span class="line">print(time.strftime(<span class="string">'%c'</span>))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">1577195541.8666182</span></span><br><span class="line"><span class="string">time.struct_time(tm_year=2019, tm_mon=12, tm_mday=24, tm_hour=13, tm_min=52, tm_sec=21, tm_wday=1, tm_yday=358, tm_isdst=0)</span></span><br><span class="line"><span class="string">time.struct_time(tm_year=2019, tm_mon=12, tm_mday=24, tm_hour=21, tm_min=52, tm_sec=21, tm_wday=1, tm_yday=358, tm_isdst=0)</span></span><br><span class="line"><span class="string">2019-12-24 21:52:21</span></span><br><span class="line"><span class="string">Tue Dec 24 21:52:21 2019</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="B-datetime一般用于日期和时间的修改"><a href="#B-datetime一般用于日期和时间的修改" class="headerlink" title="B.datetime一般用于日期和时间的修改"></a>B.datetime一般用于日期和时间的修改</h4><ul>
+<li>datetime.date 年月日</li>
+<li>datetime.time 时分秒微秒</li>
+<li>datetime.datetime 年月日 时分秒微秒</li>
+<li>datetime.timedelta(days=0,seconds=0,microseconds=0,milliseconds=0,minutes=0,hours=0,weeks=0)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">print(datetime.datetime.now())</span><br><span class="line">new_time = datetime.timedelta(minutes=<span class="number">10</span>)</span><br><span class="line">print(datetime.datetime.now() + new_time)</span><br><span class="line">one_day = datetime.datetime(<span class="number">2016</span>, <span class="number">4</span>, <span class="number">26</span>)</span><br><span class="line">new_date = datetime.timedelta(days=<span class="number">-2</span>)</span><br><span class="line">print(one_day + new_date)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">2019-12-24 22:12:45.037225</span></span><br><span class="line"><span class="string">2019-12-24 22:22:45.037280</span></span><br><span class="line"><span class="string">2016-04-24 00:00:00</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="3-数字和数学类型的math、random"><a href="#3-数字和数学类型的math、random" class="headerlink" title="3. 数字和数学类型的math、random"></a>3. 数字和数学类型的math、random</h3><h4 id="A-math数学相关的库"><a href="#A-math数学相关的库" class="headerlink" title="A.math数学相关的库"></a>A.math数学相关的库</h4><blockquote>
+<p>用于机器学习以及深度学习当中，比如计算正弦值等</p>
+</blockquote>
+<h4 id="B-random生成伪随机数"><a href="#B-random生成伪随机数" class="headerlink" title="B.random生成伪随机数"></a>B.random生成伪随机数</h4><ul>
+<li>random.random()返回 [0.0, 1.0) 范围内的下一个随机浮点数</li>
+<li>random.randint(a, b)返回随机整数N满足a &lt;= N &lt;= b。相当于randrange(a, b+1)。</li>
+<li>random.choice(seq)从非空序列 seq 返回一个随机元素。如果 seq 为空，则引发IndexError。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">print(random.random())</span><br><span class="line">print(random.randint(<span class="number">1</span>, <span class="number">5</span>))</span><br><span class="line">print(random.choice([<span class="string">'aa'</span>, <span class="string">'bb'</span>, <span class="string">'cc'</span>]))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">0.05640301910553813</span></span><br><span class="line"><span class="string">2</span></span><br><span class="line"><span class="string">bb</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h3 id="4-文件和目录访问的pathlib、os-path"><a href="#4-文件和目录访问的pathlib、os-path" class="headerlink" title="4. 文件和目录访问的pathlib、os.path"></a>4. 文件和目录访问的pathlib、os.path</h3><h4 id="A-Linux和MacOS下常用的文件操作命令"><a href="#A-Linux和MacOS下常用的文件操作命令" class="headerlink" title="A.Linux和MacOS下常用的文件操作命令"></a>A.Linux和MacOS下常用的文件操作命令</h4><ul>
+<li>ls 查看文件夹里面内容  </li>
+<li>ls -l 显示文件夹里面内容包括详情，第一个字符是-表示是文件，第一个字符是d表示是文件夹</li>
+<li>pwd 显示当前文件夹的绝对路径</li>
+<li>cd+文件夹绝对路径 进入对应的文件夹</li>
+<li>cd+相对路径 进入当前路径对应的目录文件夹中</li>
+<li>cd .. 返回上级目录</li>
+<li>mkdir+绝对路径(相对路径) 新建对应的文件夹，如果中间目录不存在可以通过mkdir -p 绝对路径(相对路径)创建</li>
+<li>rmdir+路径 删除文件夹，如果文件下还有文件需要使用rm -rf 路径删除 </li>
+<li>cp 路径A 路径B ：把路径A拷贝到路径B中</li>
+<li>mv 文件名 新文件名：给文件重新命名</li>
+<li>mv 文件名 目录名：将文件移动到目标目录</li>
+<li>mv 目录名 目录名：目标目录已存在，将源目录移动到目标目录；目标目录不存在则改名</li>
+</ul>
+<h4 id="B-os-path库"><a href="#B-os-path库" class="headerlink" title="B.os.path库"></a>B.os.path库</h4><ul>
+<li>os.path.abspath()  传入路径，会返回文件对应的绝对路径</li>
+<li>os.path.exists()  传入路径，如果文件存在返回True,不存在就返回False</li>
+<li>os.path.isdir()  传入路径，判断是否是目录</li>
+<li>os.path.join()  传入多个路径，可以拼接在一起</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">print(os.path.abspath(<span class="string">'..'</span>))	<span class="comment">#一个点表示当前文件的绝对路径，两个点表示上级目录的绝对路径</span></span><br><span class="line">print(os.path.exists(<span class="string">'/Users'</span>))</span><br><span class="line">print(os.path.isdir(<span class="string">'/Users'</span>))</span><br><span class="line">print(os.path.join(<span class="string">'/tmp/a/'</span>, <span class="string">'b/c/'</span>))</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">/Users/xumao/Desktop/Python/Project</span></span><br><span class="line"><span class="string">True</span></span><br><span class="line"><span class="string">True</span></span><br><span class="line"><span class="string">/tmp/a/b/c/</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="C-os-pathlib库"><a href="#C-os-pathlib库" class="headerlink" title="C.os.pathlib库"></a>C.os.pathlib库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"></span><br><span class="line">p = Path(<span class="string">'..'</span>)</span><br><span class="line">print(p.resolve())  <span class="comment"># 得到当前相对路径对应的绝对路径</span></span><br><span class="line">print([x <span class="keyword">for</span> x <span class="keyword">in</span> p.iterdir() <span class="keyword">if</span> x.is_dir()])</span><br><span class="line">print(p.is_dir())</span><br><span class="line">q = Path(<span class="string">'/tmp/a/b/c'</span>)</span><br><span class="line">Path.mkdir(q, parents=<span class="literal">True</span>)	<span class="comment"># 新建一个目录，parents设置为True，可以自动创建不存在的上级目录</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">输出结果</span></span><br><span class="line"><span class="string">/Users/xumao/Desktop/Python/Project</span></span><br><span class="line"><span class="string">[PosixPath('../NumPy'), PosixPath('../wisdom1'), PosixPath('../geekbangpython-master')]</span></span><br><span class="line"><span class="string">True</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h3 id="5-数据压缩和归档的tarfile"><a href="#5-数据压缩和归档的tarfile" class="headerlink" title="5. 数据压缩和归档的tarfile"></a>5. 数据压缩和归档的tarfile</h3><h3 id="6-通用操作系统的os、logging、argparse"><a href="#6-通用操作系统的os、logging、argparse" class="headerlink" title="6. 通用操作系统的os、logging、argparse"></a>6. 通用操作系统的os、logging、argparse</h3><h3 id="7-多线程的-threading、queue"><a href="#7-多线程的-threading、queue" class="headerlink" title="7. 多线程的 threading、queue"></a>7. 多线程的 threading、queue</h3><h3 id="8-Internet数据处理的-base64-、json、urllib"><a href="#8-Internet数据处理的-base64-、json、urllib" class="headerlink" title="8. Internet数据处理的 base64 、json、urllib"></a>8. Internet数据处理的 base64 、json、urllib</h3><h3 id="9-结构化标记处理工具的-html、xml"><a href="#9-结构化标记处理工具的-html、xml" class="headerlink" title="9. 结构化标记处理工具的 html、xml"></a>9. 结构化标记处理工具的 html、xml</h3><h3 id="10-开发工具的unitest"><a href="#10-开发工具的unitest" class="headerlink" title="10. 开发工具的unitest"></a>10. 开发工具的unitest</h3><h3 id="11-调试工具的-timeit"><a href="#11-调试工具的-timeit" class="headerlink" title="11. 调试工具的 timeit"></a>11. 调试工具的 timeit</h3><h3 id="12-软件包发布的venv"><a href="#12-软件包发布的venv" class="headerlink" title="12. 软件包发布的venv"></a>12. 软件包发布的venv</h3><h3 id="13-运行服务的main"><a href="#13-运行服务的main" class="headerlink" title="13. 运行服务的main"></a>13. 运行服务的<strong>main</strong></h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/04/python/%E7%AC%AC4%E7%AB%A0%20Python%E6%A0%87%E5%87%86%E5%BA%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/第3章 多线程编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/18/python/%E7%AC%AC3%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/">第三章 多线程编程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/18/python/%E7%AC%AC3%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2019-05-18T12:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第3章-多线程编程"><a href="#第3章-多线程编程" class="headerlink" title="第3章 多线程编程"></a>第3章 多线程编程</h2><ol>
+<li>python中多线程的库为threading</li>
+<li>threading.Thread()<ul>
+<li>target参数传入需要进行多线程的方法</li>
+<li>args参数传入方法所需要的参数</li>
+<li>方法实现后不会立即启动线程，需要调用start()方法才能启动线程</li>
+<li>join()方法可以加入到主线程</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> threading <span class="keyword">import</span> current_thread</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_thread</span><span class="params">(arg1, arg2)</span>:</span></span><br><span class="line">    print(current_thread().getName(), <span class="string">'start'</span>)</span><br><span class="line">    print(<span class="string">'%s %s'</span> % (arg1, arg2))</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(current_thread().getName(), <span class="string">'stop'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>):</span><br><span class="line">    t1 = threading.Thread(target=my_thread, args=(i, i + <span class="number">1</span>))</span><br><span class="line">    t1.start()</span><br><span class="line"></span><br><span class="line">print(current_thread().getName(), <span class="string">'end'</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>queue.Queue(),先进先出<br><strong>global表示申明全局变量，一般在函数内部申明</strong><ul>
+<li>queue.Queue(5)表示队列的长度为5，表示只能容纳5个队列</li>
+<li>put(元素)表示添加一个元素到队列</li>
+<li>get()从队列中取出一个元素</li>
+<li>join()阻塞调用线程，知道队列中的所有任务被处理掉</li>
+<li>empty()返回True表示为空，返回False表示不为空</li>
+<li>full()返回Ture表示满了，返回False表示没满</li>
+<li>qsize()返回队列里元素个数</li>
+<li>task_done()在完成一项任务后，向任务已经完成的队列发送一个信号</li>
+</ul>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/18/python/%E7%AC%AC3%E7%AB%A0%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python/第2章 面向对象编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/04/python/%E7%AC%AC2%E7%AB%A0%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">第二章 面向对象编程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/04/python/%E7%AC%AC2%E7%AB%A0%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2019-05-04T13:17:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第2章-面向对象编程"><a href="#第2章-面向对象编程" class="headerlink" title="第2章 面向对象编程"></a>第2章 面向对象编程</h2><h3 id="类的实例、属性、方法和继承"><a href="#类的实例、属性、方法和继承" class="headerlink" title="类的实例、属性、方法和继承"></a>类的实例、属性、方法和继承</h3><blockquote>
+<p>方法后面第一个参数一定是self<br>super().<strong>init</strong>()父类初始化属性后，子类不需要重复初始化，直接调用该方法</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span>:</span>      <span class="comment">#定义一个类</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name,hp)</span>:</span></span><br><span class="line">        self.__name = name    <span class="comment">#变量被称作属性,属性前面加双下划线表示不可被直接调用</span></span><br><span class="line">        self.hp = hp</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_role</span><span class="params">(self)</span>:</span>   <span class="comment">#定义一个方法</span></span><br><span class="line">        print(<span class="string">'%s的血量为%s'</span> %(self.__name,self.hp))</span><br><span class="line"></span><br><span class="line">user1 = Player(<span class="string">'sun'</span>,<span class="number">100</span>) <span class="comment">#类的实例化</span></span><br><span class="line">user1.print_role</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Monster</span>:</span></span><br><span class="line">    <span class="string">'定义怪物类'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, hp=<span class="number">100</span>)</span>:</span> <span class="comment">#参数后面带值为默认值</span></span><br><span class="line">        self.hp = hp</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'移动到某个位置'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">who_am_i</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'我是怪物父类'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animals</span><span class="params">(Monster)</span>:</span></span><br><span class="line">    <span class="string">'普通怪物'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, hp=<span class="number">10</span>)</span>:</span></span><br><span class="line">        super().__init__(hp)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Boss</span><span class="params">(Monster)</span>:</span></span><br><span class="line">    <span class="string">'Boss类怪物'</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, hp=<span class="number">1000</span>)</span>:</span></span><br><span class="line">        super().__init__(hp)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">who_am_i</span><span class="params">(self)</span>:</span>     <span class="comment">#和父类重名的方法会覆盖</span></span><br><span class="line">        print(<span class="string">'我是Boss'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="自定义with语句"><a href="#自定义with语句" class="headerlink" title="自定义with语句"></a>自定义with语句</h3><ul>
+<li>自定义with语句时需要实现两个方法<ul>
+<li><strong>enter</strong>(self)</li>
+<li><strong>exit</strong>(self, exc_type, exc_val, exc_tb)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestWith</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__enter__</span><span class="params">(self)</span>:</span>    </span><br><span class="line">        print(<span class="string">'run'</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__exit__</span><span class="params">(self, exc_type, exc_val, exc_tb)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> exc_tb <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            print(<span class="string">'正常结束'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'has error %s'</span> % exc_tb)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> TestWith():</span><br><span class="line">    print(<span class="string">'test is running'</span>)</span><br><span class="line">    <span class="keyword">raise</span> NameError(<span class="string">'test nameError'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="作为程序执行"><a href="#作为程序执行" class="headerlink" title="作为程序执行"></a>作为程序执行</h3><ul>
+<li>该结构表示如果当前文件用python运行，中间的语句就会执行，如果当做模块导入，语句就不会执行</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#语句</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/04/python/%E7%AC%AC2%E7%AB%A0%20%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -2699,6 +3349,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
             
             <div class="clearfix"></div>
